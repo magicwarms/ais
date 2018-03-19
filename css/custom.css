@@ -1,0 +1,63 @@
+.btn {
+    padding: 8px 35px;
+}
+.btn-default {
+    color: #616e75;
+    background-color: #ffe091;
+    border-color: #ccc;
+    margin-top: 9px;
+    border-radius: 30px;
+    font-weight: 900;
+    border: 2px solid;
+}
+.btn-default:hover {
+    color: #fbe09a;
+    background-color: #183351;
+    border-color: #adadad;
+}
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #183351e8;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+.form-control{
+	margin-bottom: 10px;
+}
+a.login {
+    color: #999;
+}
+#login{
+	background-image: url(../img/bg-visi.jpg);
+	background-position: center;
+    background-size: cover;
+}
+.btn-primary:hover {
+    color: #183351;
+    background-color: #f7d370;
+    border-color: #204d74;
+}
+h1.h3.mb-3.font-weight-normal {
+    color: #fff;
+}
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+    color: #fff;
+}
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.siswa {
+    margin: 7px;
+}
