@@ -3894,6 +3894,7 @@ li.list-group-item.text-right a {
 }
 td.deskripsi {
     width: 50%;
+    text-align: left;
 }
 input[type="file"] {
     display: block;
@@ -3938,4 +3939,32 @@ a.link {
 }
 li.list-group-item.text-muted {
     background: #ffba60;
+}
+td a.detail {
+    color: #7dd1fb;
+    padding: 10px;
+}
+a.detail:hover, a.detail:focus {
+    color: #337ab7;
+    padding: 10px;
+}
+.table-bordered.full-desc {
+    padding: 15px;
+    position: absolute;
+}
+.table-bordered.full-desc h3 {
+    margin-bottom: 10px;
+}
+a.link-download {
+    background: #183351;
+    padding: 7px 15px;
+    border-radius: 26px;
+    position: relative;
+    top: 8px;
+}
+.table-bordered.full-desc button {
+    position: relative;
+    top: 7px;
+    border-radius: 25px;
+    padding: 7px 15px;
 }
