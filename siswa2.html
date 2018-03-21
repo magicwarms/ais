@@ -14,6 +14,7 @@
   	<link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
   	<link rel="stylesheet" type="text/css" href="css/style.css">
   	<link rel="stylesheet" type="text/css" href="css/custom.css">
+  	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -37,7 +38,7 @@
 		          <li><a href="#gallery" class="link-blue-to-dark">Gallery</a></li>
 		          <li><a href="#post" class="link-blue-to-dark">Post</a></li>
 		          <li><a href="#contact" class="link-blue-to-dark">Contact</a></li> -->
-		          <a href="#"><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout </button></a>
+		          <a href="#"><button type="button" class="btn-default btn-siswa"><i class="fa fa-sign-out"></i> Logout </button></a>
 		        </ul>
 		    </div>
 	    </div>
@@ -65,10 +66,10 @@
 	            
 	          </ul> 
 	               
-	          <div class="panel panel-default">
+	          <!-- <div class="panel panel-default">
 	            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
 	            <div class="panel-body"><a class="link" href="https://www.ais.sch.id">ais.sch.id</a></div>
-	          </div>
+	          </div> -->
 	          
 	          
 	          <ul class="list-group">
@@ -96,6 +97,7 @@
 	          <ul class="nav nav-tabs" id="myTab">
 	            <li class="active nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
+	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<i class="fa fa-book"></i></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
 	              
@@ -136,15 +138,21 @@
 												</div>
 											</div>
 											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">URL</label>
+												<label class="col-sm-3 text-left text-sm-right mb-0">NIK</label>
 												<div class="col-sm-9">
 													<input type="url" name="url" class="form-control" placeholder="Type an URL..." />
 												</div>
 											</div>
 											<div class="form-group row">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Comment</label>
+												<label class="col-sm-3 text-left text-sm-right mb-0">Upload File</label>
 												<div class="col-sm-9">
-													<textarea rows="5" class="form-control" placeholder="Type your comment..." required></textarea>
+													<div class="upload-btn-wrapper">
+													  <span class="btn btn-success btn-file">
+															<span class="fileupload-exists">Change</span>
+															<span class="fileupload-new">Select file</span>
+															<input type="file" />
+														</span>
+												  	</div>			
 												</div>
 											</div>
 										</form>
@@ -170,129 +178,252 @@
 	                    <tr>
 	                      <td><i class="pull-right fa fa-edit"></i> Today, 12:23 - Mark Friendo liked and shared your post.</td>
 	                    </tr>
-	                   
-
-.table-bordered {
-    border: 1px solid #ddd;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-user agent stylesheet
-div {
-    display: block;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-body {
-    font-size: 15px;
-    line-height: 1.52;
-    color: #717f86;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
-}
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-    font-weight: normal;
-}
-html {
-    font-size: 10px;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-:after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-:after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+	                   
+
+
+
+.table-bordered {
+
+    border: 1px solid #ddd;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+* {
+
+    -webkit-box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
+user agent stylesheet
+
+div {
+
+    display: block;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+body {
+
+    font-size: 15px;
+
+    line-height: 1.52;
+
+    color: #717f86;
+
+    font-size: 16px;
+
+    font-family: 'Open Sans', sans-serif;
+
+    font-weight: 400;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+body {
+
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.42857143;
+
+    color: #333;
+
+    background-color: #fff;
+
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    font-size: 100%;
+
+    vertical-align: baseline;
+
+    background: transparent;
+
+    font-weight: normal;
+
+}
+
+html {
+
+    font-size: 10px;
+
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+}
+
+:after, :before {
+
+    -webkit-box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
+:after, :before {
+
+    -webkit-box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
  <tr>
 	                      <td><i class="pull-right fa fa-edit"></i> Today, 12:20 - You posted a new blog entry title "Why social media is".</td>
 	                    </tr>
@@ -327,6 +458,148 @@ html {
 	                  
 	                </ul> 
 	               
+	             </div><!--/tab-pane-->
+	             <div class="tab-pane" id="attendance">
+	               	<div class="card-body">
+						<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
+							<thead>
+								<tr>
+									<th>Code</th>
+									<th>Company</th>
+									<th class="text-right">Price</th>
+									<th class="text-right">Change</th>
+									<th class="text-right">Change %</th>
+									<th class="text-right">Open</th>
+									<th class="text-right">High</th>
+									<th class="text-right">Low</th>
+									<th class="text-right">Volume</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>AAC</td>
+									<td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
+									<td class="text-right">$1.38</td>
+									<td class="text-right">-0.01</td>
+									<td class="text-right">-0.36%</td>
+									<td class="text-right">$1.39</td>
+									<td class="text-right">$1.39</td>
+									<td class="text-right">$1.38</td>
+									<td class="text-right">9,395</td>
+								</tr>
+								<tr>
+									<td>AAD</td>
+									<td>ARDENT LEISURE GROUP</td>
+									<td class="text-right">$1.15</td>
+									<td class="text-right">  +0.02</td>
+									<td class="text-right">1.32%</td>
+									<td class="text-right">$1.14</td>
+									<td class="text-right">$1.15</td>
+									<td class="text-right">$1.13</td>
+									<td class="text-right">56,431</td>
+								</tr>
+								<tr>
+									<td>AAX</td>
+									<td>AUSENCO LIMITED</td>
+									<td class="text-right">$4.00</td>
+									<td class="text-right">-0.04</td>
+									<td class="text-right">-0.99%</td>
+									<td class="text-right">$4.01</td>
+									<td class="text-right">$4.05</td>
+									<td class="text-right">$4.00</td>
+									<td class="text-right">90,641</td>
+								</tr>
+								<tr>
+									<td>ABC</td>
+									<td>ADELAIDE BRIGHTON LIMITED</td>
+									<td class="text-right">$3.00</td>
+									<td class="text-right">  +0.06</td>
+									<td class="text-right">2.04%</td>
+									<td class="text-right">$2.98</td>
+									<td class="text-right">$3.00</td>
+									<td class="text-right">$2.96</td>
+									<td class="text-right">862,518</td>
+								</tr>
+								<tr>
+									<td>ABP</td>
+									<td>ABACUS PROPERTY GROUP</td>
+									<td class="text-right">$1.91</td>
+									<td class="text-right">0.00</td>
+									<td class="text-right">0.00%</td>
+									<td class="text-right">$1.92</td>
+									<td class="text-right">$1.93</td>
+									<td class="text-right">$1.90</td>
+									<td class="text-right">595,701</td>
+								</tr>
+								<tr>
+									<td>ABY</td>
+									<td>ADITYA BIRLA MINERALS LIMITED</td>
+									<td class="text-right">$0.77</td>
+									<td class="text-right">  +0.02</td>
+									<td class="text-right">2.00%</td>
+									<td class="text-right">$0.76</td>
+									<td class="text-right">$0.77</td>
+									<td class="text-right">$0.76</td>
+									<td class="text-right">54,567</td>
+								</tr>
+								<tr>
+									<td>ACR</td>
+									<td>ACRUX LIMITED</td>
+									<td class="text-right">$3.71</td>
+									<td class="text-right">  +0.01</td>
+									<td class="text-right">0.14%</td>
+									<td class="text-right">$3.70</td>
+									<td class="text-right">$3.72</td>
+									<td class="text-right">$3.68</td>
+									<td class="text-right">191,373</td>
+								</tr>
+								<tr>
+									<td>ADU</td>
+									<td>ADAMUS RESOURCES LIMITED</td>
+									<td class="text-right">$0.72</td>
+									<td class="text-right">0.00</td>
+									<td class="text-right">0.00%</td>
+									<td class="text-right">$0.73</td>
+									<td class="text-right">$0.74</td>
+									<td class="text-right">$0.72</td>
+									<td class="text-right">8,602,291</td>
+								</tr>
+								<tr>
+									<td>AGG</td>
+									<td>ANGLOGOLD ASHANTI LIMITED</td>
+									<td class="text-right">$7.81</td>
+									<td class="text-right">-0.22</td>
+									<td class="text-right">-2.74%</td>
+									<td class="text-right">$7.82</td>
+									<td class="text-right">$7.82</td>
+									<td class="text-right">$7.81</td>
+									<td class="text-right">148</td>
+								</tr>
+								<tr>
+									<td>AGK</td>
+									<td>AGL ENERGY LIMITED</td>
+									<td class="text-right">$13.82</td>
+									<td class="text-right">  +0.02</td>
+									<td class="text-right">0.14%</td>
+									<td class="text-right">$13.83</td>
+									<td class="text-right">$13.83</td>
+									<td class="text-right">$13.67</td>
+									<td class="text-right">846,403</td>
+								</tr>
+								<tr>
+									<td>AGO</td>
+									<td>ATLAS IRON LIMITED</td>
+									<td class="text-right">$3.17</td>
+									<td class="text-right">-0.02</td>
+									<td class="text-right">-0.47%</td>
+									<td class="text-right">$3.11</td>
+									<td class="text-right">$3.22</td>
+									<td class="text-right">$3.10</td>
+									<td class="text-right">5,416,303</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="settings">
 	            		
