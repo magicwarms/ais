@@ -61,3 +61,17 @@ h1.h3.mb-3.font-weight-normal {
 .siswa {
     margin: 7px;
 }
+.list-group {
+    margin-bottom: 30px !important;
+}
+.card-body {
+    padding: 0 !important;
+}
+.badge {
+    top: -1px;
+    left: -2px;
+}
+.table-bordered.full-desc button a{
+    color: #fff;
+    text-decoration: none;
+}

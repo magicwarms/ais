@@ -3961,6 +3961,12 @@ a.link-download {
     border-radius: 26px;
     position: relative;
     top: 8px;
+    color: #fff;
+    text-decoration: none;
+}
+a.link-download:hover {
+    color: #fff;
+    text-decoration: none;
 }
 .table-bordered.full-desc button {
     position: relative;
