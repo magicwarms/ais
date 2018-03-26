@@ -75,3 +75,15 @@ h1.h3.mb-3.font-weight-normal {
     color: #fff;
     text-decoration: none;
 }
+button.btn.btn-default.btn-siswa {
+    border-radius: 50px;
+    border: 3px solid #868e96;
+    font-weight: 500;
+}
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn:focus, .btn:hover {
+    text-decoration: none;
+}
