@@ -28,7 +28,7 @@
 		          <span class="icon-bar"></span>
 		        </button>
 		    </div>
-		    <div class="collapse navbar-collapse siswa" id="myNavbar">
+		    <div class="collapse navbar-collapse" id="myNavbar">
 		        <ul class="nav navbar-nav navbar-right">
 		         <!--  <li><a href="#home" class="link-blue-to-dark">Home</a></li>
 		          <li><a href="#about-ais" class="link-blue-to-dark">About AIS</a></li>
@@ -38,7 +38,7 @@
 		          <li><a href="#gallery" class="link-blue-to-dark">Gallery</a></li>
 		          <li><a href="#post" class="link-blue-to-dark">Post</a></li>
 		          <li><a href="#contact" class="link-blue-to-dark">Contact</a></li> -->
-		          <a href="#"><button type="button" class="btn-default btn-siswa"><i class="fa fa-sign-out"></i> Logout </button></a>
+		          <a href="#"><button type="button" class="btn btn-default btn-siswa"><i class="fa fa-sign-out"></i> Logout </button></a>
 		        </ul>
 		    </div>
 	    </div>
@@ -96,6 +96,7 @@
 	          
 	          <ul class="nav nav-tabs" id="myTab">
 	            <li class="active nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">4</span></a></li>
+	            <li class="nav-siswa"><a href="#sent-task" data-toggle="tab">Sent Task<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance <i class="fa fa-book"></i></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
@@ -312,6 +313,186 @@
 	                </table>
 	              </div> -->
 	              
+	             </div><!--/tab-pane-->
+	             <div class="tab-pane" id="sent-task">
+		            <div class="table-bordered">
+		                <table class="table table-hover">
+		                  <thead>
+		                    <tr>
+		                      <th>No</th>
+		                      <th>Description</th>
+		                      <th>Start</th>
+		                      <th>Due Date</th>
+		                      <th>Details</th>
+		                      <!-- <th>Label </th>
+		                      <th>Label </th> -->
+		                    </tr>
+		                  </thead>
+		                  <tbody id="items">
+		                    <tr class="info new">
+		                      <td>1</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="siswa2.html" class="detail">Details...</a>						  
+							  </td>
+							  
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>2</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>3</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>4</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>5</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>6</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>7</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>8</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>9</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>10</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>11</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>12</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>13</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                    <tr>
+		                      <td>14</td>
+		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		                      tempor incididunt ut labore et dolore magna aliqua.</td>
+		                      <td>20/07/2018</td>
+		                      <td>25/07/2018</td>
+		                      <td><a href="" class="detail">Details...</a>						  
+							  </td>
+		                      <!-- <td>Table cell</td>
+		                      <td>Table cell</td> -->
+		                    </tr>
+		                  </tbody>
+		                </table>
+		                <hr>
+		                <div class="row">
+		                  <div class="col-md-4 col-md-offset-4 text-center">
+		                  	<ul class="pagination" id="myPager"></ul>
+		                  </div>
+		                </div>
+		            </div><!--/table-resp-->
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="payment">
 	               
