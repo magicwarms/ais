@@ -81,7 +81,32 @@ button.btn.btn-default.btn-siswa {
     font-weight: 500;
     font-size: 14px;
     padding: 8px 35px;
+    margin-top: 0;
 }
 button.btn.btn-default.btn-siswa:focus {
     box-shadow: none;
+}
+a:focus{
+    outline: none;
+}
+.modal-dialog {
+    /*margin: 0 auto !important;*/
+    top: 160px;
+}
+.text-muted {
+    color: #343a40 !important;
+}
+button.btn.btn-default.btn-ortu {
+    border-radius: 50px;
+    border: 3px solid #868e96;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 35px;
+    margin-top: 3px;
+}
+button.btn.btn-default.btn-ortu:focus {
+    box-shadow: none;
+}
+nav.navbar.navbar-default.navbar-fixed-top.parents {
+    padding: 0;
 }

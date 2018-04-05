@@ -3829,9 +3829,11 @@ button.close {
 Siswa page
 ************************************/
 section#siswa-prof.section-padding .container img {
-    width: 150px;
+    /*width: 150px;
     height: 170px;
     margin-top: 8px;
+    border-radius: 14%;*/
+    width: 90%;
     border-radius: 14%;
 }
 .col-md-10.nama {
@@ -3973,4 +3975,44 @@ a.link-download:hover {
     top: 7px;
     border-radius: 25px;
     padding: 7px 15px;
+}
+span.badge-info.sent-info {
+    padding: 5px 20px;
+    border-radius: 50px;
+    position: relative;
+    top: 20px;
+    left: 7px;
+}
+span.badge-warning.sent-info {
+    padding: 5px 20px;
+    border-radius: 50px;
+    position: relative;
+    top: 20px;
+    left: 7px;
+}
+span.badge-danger.sent-info {
+    padding: 5px 20px;
+    border-radius: 50px;
+    position: relative;
+    top: 20px;
+    left: 7px;
+}
+a.info-badge i.fa.fa-edit {
+    position: relative;
+    top: 20px;
+    left: 14px;
+    background: #dc3545;
+    padding: 5px;
+    border-radius: 6px;
+    color: #fff;
+}
+span.badge-info.payment-info {
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+.col-sm-12.desc-pay {
+    text-align: left;
+}
+h5.form-list {
+    text-align: left;
 }

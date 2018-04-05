@@ -47,7 +47,7 @@
 		<div class="container">
 			<div class="row photo">
 				<div class="col-md-2">
-					<img src="img/facilities/picture6.jpg">
+					<img src="img/photo.png">
 				</div>
 				<div class="col-md-10 nama">
 					<h3>JHON DOE</h3>
@@ -98,6 +98,7 @@
 	            <li class="active nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#sent-task" data-toggle="tab">Sent Task<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
+	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<i class="fa fa-book"></i></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
@@ -110,18 +111,18 @@
 	                  jika melebihi batas waktu yang saya berikan maka nilai anda tidak akan diterima.
 	                  silakan download file atau soal yang telah saya berikan melalui link download berikut !!</p>
 	                  <p><a class="link-download" href="download/dragon ball.txt" download>Download File</a> 
-	                  	 <button class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+	                  	 <button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
 						 Upload Tugas
 					  	 </button>
 					  	 <button class="btn btn-success" >
 					  	 	<a href="siswa.html">back</a>
 					  	 </button>
 					  </p>
-						<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+						<div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModal1Label" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h4 class="modal-title" id="formModalLabel">Silakan Upload File/Tugas Yang Telah Anda Kerjakan !!!</h4>
+										<h4 class="modal-title" id="formModal1Label">Silakan Upload File/Tugas Yang Telah Anda Kerjakan !!!</h4>
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<div class="modal-body">
@@ -463,8 +464,7 @@ html {
 		                      tempor incididunt ut labore et dolore magna aliqua.</td>
 		                      <td>20/07/2018</td>
 		                      <td>25/07/2018</td>
-		                      <td><a href="siswa2.html" class="detail">Details...</a>						  
-							  </td>
+		                      <td><span class="badge-info sent-info">Terkirim</span></td>
 							  
 		                      <!-- <td>Table cell</td>
 		                      <td>Table cell</td> -->
@@ -475,8 +475,7 @@ html {
 		                      tempor incididunt ut labore et dolore magna aliqua.</td>
 		                      <td>20/07/2018</td>
 		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
+		                      <td><span class="badge-warning sent-info">Pending</span></td>
 		                      <!-- <td>Table cell</td>
 		                      <td>Table cell</td> -->
 		                    </tr>
@@ -486,129 +485,7 @@ html {
 		                      tempor incididunt ut labore et dolore magna aliqua.</td>
 		                      <td>20/07/2018</td>
 		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>4</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>5</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>6</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>7</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>8</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>9</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>10</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>11</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>12</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>13</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
-		                      <!-- <td>Table cell</td>
-		                      <td>Table cell</td> -->
-		                    </tr>
-		                    <tr>
-		                      <td>14</td>
-		                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		                      tempor incididunt ut labore et dolore magna aliqua.</td>
-		                      <td>20/07/2018</td>
-		                      <td>25/07/2018</td>
-		                      <td><a href="" class="detail">Details...</a>						  
-							  </td>
+		                      <td><span class="badge-danger sent-info">Failed</span><a href="#" class="info-badge" title="edit"><i class="fa fa-edit"></i></a></td>
 		                      <!-- <td>Table cell</td>
 		                      <td>Table cell</td> -->
 		                    </tr>
@@ -623,12 +500,70 @@ html {
 		            </div><!--/table-resp-->
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="payment">
-	               
 	               <h2></h2>
 	               
 	               <ul class="list-group">
 	                  <li class="list-group-item text-muted">Payment</li>
-	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
+	                  <li class="list-group-item text-right"><a href="#" class="pull-left" data-toggle="modal" data-target="#formModal">Pembayaran SPP sebesar <span class="badge-info payment-info">Rp.200.000</span></a> s/d 2.13.2014
+						<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form id="demo-form" class="mb-4" novalidate="novalidate">
+											<div class="form-group row align-items-center">
+												<div class="col-sm-12 desc-pay"> 
+													Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
+													Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengisi form pembayaran dibawah ini.
+												</div>
+											</div>
+											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Name</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Email</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">URL</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<div class="col-lg-6">
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<input type="file" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Comment</label> -->
+												<div class="col-sm-9">
+													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Save Changes</button>
+									</div>
+								</div>
+							</div>
+						</div></li>
+
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
@@ -636,155 +571,299 @@ html {
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-	                  
 	                </ul> 
-	               
+	             </div><!--/tab-pane-->
+	             <div class="tab-pane" id="history_payment">
+	               <div class="row">
+						<div class="col">
+							<section class="card card-admin">
+								<div class="card-body">
+									<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
+										<thead>
+											<tr>
+												<th>Code</th>
+												<th>Company</th>
+												<th class="text-right">Price</th>
+												<th class="text-right">Change</th>
+												<th class="text-right">Change %</th>
+												<th class="text-right">Open</th>
+												<th class="text-right">High</th>
+												<th class="text-right">Low</th>
+												<th class="text-right">Volume</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>AAC</td>
+												<td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
+												<td class="text-right">$1.38</td>
+												<td class="text-right">-0.01</td>
+												<td class="text-right">-0.36%</td>
+												<td class="text-right">$1.39</td>
+												<td class="text-right">$1.39</td>
+												<td class="text-right">$1.38</td>
+												<td class="text-right">9,395</td>
+											</tr>
+											<tr>
+												<td>AAD</td>
+												<td>ARDENT LEISURE GROUP</td>
+												<td class="text-right">$1.15</td>
+												<td class="text-right">  +0.02</td>
+												<td class="text-right">1.32%</td>
+												<td class="text-right">$1.14</td>
+												<td class="text-right">$1.15</td>
+												<td class="text-right">$1.13</td>
+												<td class="text-right">56,431</td>
+											</tr>
+											<tr>
+												<td>AAX</td>
+												<td>AUSENCO LIMITED</td>
+												<td class="text-right">$4.00</td>
+												<td class="text-right">-0.04</td>
+												<td class="text-right">-0.99%</td>
+												<td class="text-right">$4.01</td>
+												<td class="text-right">$4.05</td>
+												<td class="text-right">$4.00</td>
+												<td class="text-right">90,641</td>
+											</tr>
+											<tr>
+												<td>ABC</td>
+												<td>ADELAIDE BRIGHTON LIMITED</td>
+												<td class="text-right">$3.00</td>
+												<td class="text-right">  +0.06</td>
+												<td class="text-right">2.04%</td>
+												<td class="text-right">$2.98</td>
+												<td class="text-right">$3.00</td>
+												<td class="text-right">$2.96</td>
+												<td class="text-right">862,518</td>
+											</tr>
+											<tr>
+												<td>ABP</td>
+												<td>ABACUS PROPERTY GROUP</td>
+												<td class="text-right">$1.91</td>
+												<td class="text-right">0.00</td>
+												<td class="text-right">0.00%</td>
+												<td class="text-right">$1.92</td>
+												<td class="text-right">$1.93</td>
+												<td class="text-right">$1.90</td>
+												<td class="text-right">595,701</td>
+											</tr>
+											<tr>
+												<td>ABY</td>
+												<td>ADITYA BIRLA MINERALS LIMITED</td>
+												<td class="text-right">$0.77</td>
+												<td class="text-right">  +0.02</td>
+												<td class="text-right">2.00%</td>
+												<td class="text-right">$0.76</td>
+												<td class="text-right">$0.77</td>
+												<td class="text-right">$0.76</td>
+												<td class="text-right">54,567</td>
+											</tr>
+											<tr>
+												<td>ACR</td>
+												<td>ACRUX LIMITED</td>
+												<td class="text-right">$3.71</td>
+												<td class="text-right">  +0.01</td>
+												<td class="text-right">0.14%</td>
+												<td class="text-right">$3.70</td>
+												<td class="text-right">$3.72</td>
+												<td class="text-right">$3.68</td>
+												<td class="text-right">191,373</td>
+											</tr>
+											<tr>
+												<td>ADU</td>
+												<td>ADAMUS RESOURCES LIMITED</td>
+												<td class="text-right">$0.72</td>
+												<td class="text-right">0.00</td>
+												<td class="text-right">0.00%</td>
+												<td class="text-right">$0.73</td>
+												<td class="text-right">$0.74</td>
+												<td class="text-right">$0.72</td>
+												<td class="text-right">8,602,291</td>
+											</tr>
+											<tr>
+												<td>AGG</td>
+												<td>ANGLOGOLD ASHANTI LIMITED</td>
+												<td class="text-right">$7.81</td>
+												<td class="text-right">-0.22</td>
+												<td class="text-right">-2.74%</td>
+												<td class="text-right">$7.82</td>
+												<td class="text-right">$7.82</td>
+												<td class="text-right">$7.81</td>
+												<td class="text-right">148</td>
+											</tr>
+											<tr>
+												<td>AGK</td>
+												<td>AGL ENERGY LIMITED</td>
+												<td class="text-right">$13.82</td>
+												<td class="text-right">  +0.02</td>
+												<td class="text-right">0.14%</td>
+												<td class="text-right">$13.83</td>
+												<td class="text-right">$13.83</td>
+												<td class="text-right">$13.67</td>
+												<td class="text-right">846,403</td>
+											</tr>
+											<tr>
+												<td>AGO</td>
+												<td>ATLAS IRON LIMITED</td>
+												<td class="text-right">$3.17</td>
+												<td class="text-right">-0.02</td>
+												<td class="text-right">-0.47%</td>
+												<td class="text-right">$3.11</td>
+												<td class="text-right">$3.22</td>
+												<td class="text-right">$3.10</td>
+												<td class="text-right">5,416,303</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</section>
+						</div>
+					</div>
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="attendance">
-	               	<div class="card-body">
+	               <div class="card-body">
 						<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
 							<thead>
 								<tr>
-									<th>Code</th>
-									<th>Company</th>
-									<th class="text-right">Price</th>
+									<th>Name & Date</th>
+									<th>Kriswanto</th>
+									<!-- <th class="text-right">Price</th>
 									<th class="text-right">Change</th>
 									<th class="text-right">Change %</th>
 									<th class="text-right">Open</th>
 									<th class="text-right">High</th>
 									<th class="text-right">Low</th>
-									<th class="text-right">Volume</th>
+									<th class="text-right">Volume</th> -->
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>AAC</td>
-									<td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-									<td class="text-right">$1.38</td>
+									<td>01/03/2018</td>
+									<td><span class="badge badge-dark">Sakit</span></td>
+									<!-- <td class="text-right">$1.38</td>
 									<td class="text-right">-0.01</td>
 									<td class="text-right">-0.36%</td>
 									<td class="text-right">$1.39</td>
 									<td class="text-right">$1.39</td>
 									<td class="text-right">$1.38</td>
-									<td class="text-right">9,395</td>
+									<td class="text-right">9,395</td> -->
 								</tr>
 								<tr>
-									<td>AAD</td>
-									<td>ARDENT LEISURE GROUP</td>
-									<td class="text-right">$1.15</td>
+									<td>02/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$1.15</td>
 									<td class="text-right">  +0.02</td>
 									<td class="text-right">1.32%</td>
 									<td class="text-right">$1.14</td>
 									<td class="text-right">$1.15</td>
 									<td class="text-right">$1.13</td>
-									<td class="text-right">56,431</td>
+									<td class="text-right">56,431</td> -->
 								</tr>
 								<tr>
-									<td>AAX</td>
-									<td>AUSENCO LIMITED</td>
-									<td class="text-right">$4.00</td>
+									<td>03/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$4.00</td>
 									<td class="text-right">-0.04</td>
 									<td class="text-right">-0.99%</td>
 									<td class="text-right">$4.01</td>
 									<td class="text-right">$4.05</td>
 									<td class="text-right">$4.00</td>
-									<td class="text-right">90,641</td>
+									<td class="text-right">90,641</td> -->
 								</tr>
 								<tr>
-									<td>ABC</td>
-									<td>ADELAIDE BRIGHTON LIMITED</td>
-									<td class="text-right">$3.00</td>
+									<td>04/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$3.00</td>
 									<td class="text-right">  +0.06</td>
 									<td class="text-right">2.04%</td>
 									<td class="text-right">$2.98</td>
 									<td class="text-right">$3.00</td>
 									<td class="text-right">$2.96</td>
-									<td class="text-right">862,518</td>
+									<td class="text-right">862,518</td> -->
 								</tr>
 								<tr>
-									<td>ABP</td>
-									<td>ABACUS PROPERTY GROUP</td>
-									<td class="text-right">$1.91</td>
+									<td>05/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$1.91</td>
 									<td class="text-right">0.00</td>
 									<td class="text-right">0.00%</td>
 									<td class="text-right">$1.92</td>
 									<td class="text-right">$1.93</td>
 									<td class="text-right">$1.90</td>
-									<td class="text-right">595,701</td>
+									<td class="text-right">595,701</td> -->
 								</tr>
 								<tr>
-									<td>ABY</td>
-									<td>ADITYA BIRLA MINERALS LIMITED</td>
-									<td class="text-right">$0.77</td>
+									<td>06/031028</td>
+									<td><span class="badge badge-danger">Tanpa keterangan</span></td>
+									<!-- <td class="text-right">$0.77</td>
 									<td class="text-right">  +0.02</td>
 									<td class="text-right">2.00%</td>
 									<td class="text-right">$0.76</td>
 									<td class="text-right">$0.77</td>
 									<td class="text-right">$0.76</td>
-									<td class="text-right">54,567</td>
+									<td class="text-right">54,567</td> -->
 								</tr>
 								<tr>
-									<td>ACR</td>
-									<td>ACRUX LIMITED</td>
-									<td class="text-right">$3.71</td>
+									<td>07/031028</td>
+									<td><span class="badge badge-info">Izin</span></td>
+									<!-- <td class="text-right">$3.71</td>
 									<td class="text-right">  +0.01</td>
 									<td class="text-right">0.14%</td>
 									<td class="text-right">$3.70</td>
 									<td class="text-right">$3.72</td>
 									<td class="text-right">$3.68</td>
-									<td class="text-right">191,373</td>
+									<td class="text-right">191,373</td> -->
 								</tr>
 								<tr>
-									<td>ADU</td>
-									<td>ADAMUS RESOURCES LIMITED</td>
-									<td class="text-right">$0.72</td>
+									<td>08/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$0.72</td>
 									<td class="text-right">0.00</td>
 									<td class="text-right">0.00%</td>
 									<td class="text-right">$0.73</td>
 									<td class="text-right">$0.74</td>
 									<td class="text-right">$0.72</td>
-									<td class="text-right">8,602,291</td>
+									<td class="text-right">8,602,291</td> -->
 								</tr>
 								<tr>
-									<td>AGG</td>
-									<td>ANGLOGOLD ASHANTI LIMITED</td>
-									<td class="text-right">$7.81</td>
+									<td>09/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$7.81</td>
 									<td class="text-right">-0.22</td>
 									<td class="text-right">-2.74%</td>
 									<td class="text-right">$7.82</td>
 									<td class="text-right">$7.82</td>
 									<td class="text-right">$7.81</td>
-									<td class="text-right">148</td>
+									<td class="text-right">148</td> -->
 								</tr>
 								<tr>
-									<td>AGK</td>
-									<td>AGL ENERGY LIMITED</td>
-									<td class="text-right">$13.82</td>
+									<td>03/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$13.82</td>
 									<td class="text-right">  +0.02</td>
 									<td class="text-right">0.14%</td>
 									<td class="text-right">$13.83</td>
 									<td class="text-right">$13.83</td>
 									<td class="text-right">$13.67</td>
-									<td class="text-right">846,403</td>
+									<td class="text-right">846,403</td> -->
 								</tr>
 								<tr>
-									<td>AGO</td>
-									<td>ATLAS IRON LIMITED</td>
-									<td class="text-right">$3.17</td>
+									<td>10/031028</td>
+									<td><i class="fa fa-check"></i></td>
+									<!-- <td class="text-right">$3.17</td>
 									<td class="text-right">-0.02</td>
 									<td class="text-right">-0.47%</td>
 									<td class="text-right">$3.11</td>
 									<td class="text-right">$3.22</td>
 									<td class="text-right">$3.10</td>
-									<td class="text-right">5,416,303</td>
+									<td class="text-right">5,416,303</td> -->
 								</tr>
 							</tbody>
 						</table>
 					</div>
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="settings">
-	            		
-	               	
 	                  <hr>
 	                  <form class="form" action="##" method="post" id="registrationForm">
 	                      <div class="form-group">
