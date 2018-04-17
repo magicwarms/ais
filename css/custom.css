@@ -110,3 +110,7 @@ button.btn.btn-default.btn-ortu:focus {
 nav.navbar.navbar-default.navbar-fixed-top.parents {
     padding: 0;
 }
+.ul-li ul {
+    list-style: inside;
+    margin-bottom: 10px;
+}
