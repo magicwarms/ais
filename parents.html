@@ -103,10 +103,32 @@
 	              
 	          <div class="tab-content">
 	            <div class="tab-pane active" id="payment">
-	               <h2></h2>
-	               <ul class="list-group"> 
-	                  <li class="list-group-item text-right"><a href="#" class="pull-left" data-toggle="modal" data-target="#formModal">Pembayaran SPP sebesar <span class="badge-info payment-info">Rp.200.000</span></a> s/d 2.13.2014
-						<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+	               <!-- <h2></h2> -->
+	               <ul class="list-group">
+	                  <li class="list-group-item text-muted">Payment</li>
+	                  <li class="list-group-item text-right">
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong></a> 
+	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
+							Konfirmasi
+						</button>
+						<div class="modal fade" id="defaultModal1" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<p style="text-align: left;">Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
+										Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -115,12 +137,6 @@
 									</div>
 									<div class="modal-body">
 										<form id="demo-form" class="mb-4" novalidate="novalidate">
-											<div class="form-group row align-items-center">
-												<div class="col-sm-12 desc-pay"> 
-													Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
-													Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengisi form pembayaran dibawah ini.
-												</div>
-											</div>
 											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
 											<div class="form-group row align-items-center">
 												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Name</label> -->
@@ -163,14 +179,251 @@
 									</div>
 								</div>
 							</div>
-						</div></li>
-	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
-	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+						</div>
+					  </li>
+	                  <li class="list-group-item text-right">
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal2"><strong>Perlengkapan Sekolah</strong></a> 
+	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal2">
+							Konfirmasi
+						</button>
+						<div class="modal fade" id="defaultModal2" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body ul-li" style="text-align: left;">
+										<p>Anda diharuskan membayar uang perlengkapan sekolah sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
+										<br>dimana rinciannya sebagai berikut:</p>
+										<ul>
+											<li>Baju Sekolah : Rp.100.000</li>
+											<li>Uang Buku 	 : Rp.50.000</li>
+											<li>Uang Gedung  : Rp.50.000</li>
+										</ul>
+										<p>Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="formModal2" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form id="demo-form" class="mb-4" novalidate="novalidate">
+											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Name</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Email</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">URL</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<div class="col-lg-6">
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<input type="file" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Comment</label> -->
+												<div class="col-sm-9">
+													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Send</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					  </li>
+					  <li class="list-group-item text-right">
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong></a> 
+	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
+							Konfirmasi
+						</button>
+						<div class="modal fade" id="defaultModal1" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<p style="text-align: left;">Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
+										Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form id="demo-form" class="mb-4" novalidate="novalidate">
+											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Name</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Email</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">URL</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<div class="col-lg-6">
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<input type="file" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Comment</label> -->
+												<div class="col-sm-9">
+													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Send</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					  </li>
+	                  <li class="list-group-item text-right">
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal3"><strong>Perlengkapan Sekolah</strong></a> 
+	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal3">
+							Konfirmasi
+						</button>
+						<div class="modal fade" id="defaultModal3" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body ul-li" style="text-align: left;">
+										<p>Anda diharuskan membayar uang perlengkapan sekolah sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
+										<br>dimana rinciannya sebagai berikut:</p>
+										<ul>
+											<li>Baju Sekolah : Rp.100.000</li>
+											<li>Uang Buku 	 : Rp.50.000</li>
+											<li>Uang Gedung  : Rp.50.000</li>
+										</ul>
+										<p>Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="formModal3" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<form id="demo-form" class="mb-4" novalidate="novalidate">
+											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Name</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Email</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">URL</label> -->
+												<div class="col-sm-9">
+													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<div class="col-lg-6">
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<input type="file" />
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<!-- <label class="col-sm-3 text-left text-sm-right mb-0">Comment</label> -->
+												<div class="col-sm-9">
+													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Send</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					  </li>
+	                  <!-- <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
 	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
-	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+	                  <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li> -->
 	                </ul> 
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="history_payment">
