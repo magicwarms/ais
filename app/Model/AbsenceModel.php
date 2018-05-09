@@ -10,8 +10,8 @@ class AbsenceModel extends Model {
     use SoftDeletes;
     protected $table = 'absent_students';
 	protected $fillable = [
-        'students_id', 'code','class_id','input_by','remark'
+        'students_id', 'code','class_id','input_by','remark','absent_date'
     ];
-  	protected $dates = ['deleted_at'];
+  	protected $dates = ['deleted_at','absent_date'];
   	public $timestamps = false;
 }

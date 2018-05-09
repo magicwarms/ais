@@ -42,7 +42,7 @@
 	              <th>Kelas</th>
                 <th>Absen</th>
                 <th>Keterangan</th>
-                <th>Created</th>
+                <th>Tanggal Absen</th>
 	              <th>Updated</th>
 	              <th class="action-order">Action</th>
 	            </tr>
@@ -54,7 +54,7 @@
                 <th>Kelas</th>
                 <th>Absen</th>
                 <th>Keterangan</th>
-                <th>Created</th>
+                <th>Tanggal Absen</th>
                 <th>Updated</th>
                 <th class="action-order">Action</th>
 	            </tr>
@@ -155,7 +155,7 @@
                     extend: 'excel',
                     pageSize: 'A4',
                     exportOptions: {
-                      columns: [ 0, 1, 2, 3, 4 ]
+                      columns: [ 0, 1, 2, 3, 4, 5 ]
                     }
                 },
                 {
@@ -163,7 +163,7 @@
                     orientation: 'potrait',
                     pageSize: 'A4',
                     exportOptions: {
-                      columns: [ 0, 1, 2, 3, 4 ]
+                      columns: [ 0, 1, 2, 3, 4, 5 ]
                     }
                 },
             ],
@@ -179,7 +179,7 @@
                 { data: 'class_name'},
                 { data: 'code'},
                 { data: 'remark'},
-                { data: 'created_date'},
+                { data: 'absent_date'},
                 { data: 'updated_date'},
                 { data: 'action', name: 'action', orderable: false, searchable: false, "width": "25px", "className": "text-center" },
             ],

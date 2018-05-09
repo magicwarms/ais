@@ -136,8 +136,9 @@
                 <label>Level</label>
                 <br>
                 <select name="level" id="select_demo_5" data-md-selectize data-md-selectize-bottom required>
-                <option value="1" @if ($get_user->level === 1) selected @endif>Admin</option>
-                <option value="2" @if ($get_user->level === 2) selected @endif>Normal User</option>
+                <option value="1" @if ($get_user->level === 1) selected @endif>Superadmin</option>
+                <option value="2" @if ($get_user->level === 2) selected @endif>Admin/TU</option>
+                <option value="3" @if ($get_user->level === 3) selected @endif>Keuangan</option>
               </select>
               </div>
               <p class="uk-text-danger">{{ $errors->first('level') }}</p>

@@ -23,19 +23,19 @@ class AbsenceController extends Controller {
         $absence = DB::table('absent_students')
         ->join('students', 'students.id', '=', 'absent_students.students_id')
         ->join('class', 'class.id', '=', 'absent_students.class_id')
-        ->where('class.id', $class_id)
-        ->orWhere('absent_students.created_date', date("Y-m-d",strtotime($start_date)))
-        ->orWhere('absent_students.created_date', date("Y-m-d",strtotime($end_date)))
+        ->whereRaw('absent_students.absent_date BETWEEN '."'".date("Y-m-d", strtotime($start_date))."'".' AND '."'".date("Y-m-d", strtotime($end_date))."'".'')
+        ->where('absent_students.class_id', $class_id)
         ->select([ // [ ]<-- biar lebih rapi aja
             'students.name AS students_name',
             'class.name AS class_name',
             'absent_students.id',
             'absent_students.code',
             'absent_students.remark',
-            'absent_students.created_date',
+            'absent_students.absent_date',
             'absent_students.updated_date'
         ])
         ->get();
+        //dd($absence);
         return Datatables::of($absence)
         ->editColumn('code', function ($model) {
             $code = $model->code;
@@ -46,8 +46,8 @@ class AbsenceController extends Controller {
             }
             return $code;
         })
-        ->editColumn('created_date', function ($model) {
-            $created = date('d F Y H:i:s', strtotime($model->created_date));
+        ->editColumn('absent_date', function ($model) {
+            $created = date('d F Y', strtotime($model->absent_date));
             return $created;
         })
         ->editColumn('updated_date', function ($model) {
@@ -105,7 +105,8 @@ class AbsenceController extends Controller {
     		'students_id' => request('students_id'),
     		'code' => request('code'),
     		'input_by' => \Auth::user()->id,
-    		'class_id' => $get_class->class_id,
+            'class_id' => $get_class->class_id,
+    		'absent_date' => date('Y-m-d'),
     		'remark' => $remark
     	]);
 
@@ -144,6 +145,7 @@ class AbsenceController extends Controller {
         $absence->students_id = request('students_id');
         $absence->code = request('code');
         $absence->class_id = $get_class->class_id;
+        $absence->absent_date = date('Y-m-d');
         $absence->remark = $remark;
         $absence->save();
 

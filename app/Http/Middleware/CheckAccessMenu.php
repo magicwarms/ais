@@ -25,6 +25,7 @@ class CheckAccessMenu
         if($find_menu_id != ''){
             $find_menu = MenuJoinAdminModel::where('menu_admin_id', $find_menu_id->id)->where('user_admin_id', $auth_id)->first();
             if(empty($find_menu)) {
+                dd("kesini dia wak");
                 return redirect()->back()->with('warning','Kamu tidak diperbolehkan akses menu tersebut.');
             }
         }

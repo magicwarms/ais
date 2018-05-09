@@ -15,7 +15,7 @@ class ClassesSeeder extends Seeder {
         $faker = Faker::create('id_ID');
     	foreach (range(1,100) as $index) {
 	        DB::table('class')->insert([
-	            'name' => 'Kelas '.$faker->city(),
+	            'name' => 'Kelas '.$faker->unique()->city(),
 	            'code' => $faker->unique()->numberBetween(1000, 9000),
 	            'status' => 1,
 	        ]);

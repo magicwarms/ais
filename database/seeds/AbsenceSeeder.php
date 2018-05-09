@@ -16,9 +16,10 @@ class AbsenceSeeder extends Seeder
         $faker = Faker::create('id_ID');
     	foreach (range(1,100) as $index) {
 	        DB::table('absent_students')->insert([
-	            'students_id' => $faker->numberBetween(1, 100),
-	            'class_id' => $faker->numberBetween(1, 100),
-	            'code' => $faker->numberBetween(1, 2),
+	            'students_id' => $faker->numberBetween(1, 98),
+	            'class_id' => $faker->numberBetween(1, 98),
+                'code' => $faker->numberBetween(1, 2),
+	            'absent_date' => date('Y-m-d'),
 	            'remark' => $faker->sentence(2, true),
 	            'input_by' => 1,
 	        ]);
