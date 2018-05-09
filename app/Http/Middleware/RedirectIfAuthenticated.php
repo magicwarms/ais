@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
         switch ($guard) {
             case 'teacher':
             if (Auth::guard($guard)->check()) {
-                return redirect()->route('berandas');
+                return redirect()->route('teacher.profile');
             }
             break;
             case 'parent':

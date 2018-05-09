@@ -21,6 +21,7 @@ if (!function_exists('menu_active')) {
         return $result;
     }
 }
+
 if (!function_exists('get_parent_menu_name')) {
 	function get_parent_menu_name($id){
 		$get_parent = MenuModel::select('name')->where('id', $id)->first();

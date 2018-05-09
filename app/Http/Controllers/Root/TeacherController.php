@@ -72,7 +72,6 @@ class TeacherController extends Controller {
         $teacher = TeacherModel::findOrFail($teacher_id);
         if($teacher->status == 1)$status='true'; else $status='';
         $output = array(
-            'name'    =>  $teacher->name,
             'name'     =>  $teacher->name,
             'address'     =>  $teacher->address,
             'birthday'     =>  date('d.m.Y', strtotime($teacher->birthday)),
@@ -80,6 +79,7 @@ class TeacherController extends Controller {
             'gender'     =>  $teacher->gender,
             'education'     =>  $teacher->education,
             'photo_file'     =>  $teacher->photo_file,
+            'phone'     =>  $teacher->phone,
             'status'     =>  $status
         );
         echo json_encode($output);
@@ -96,6 +96,7 @@ class TeacherController extends Controller {
             'gender' => 'required',
             'education' => 'required|min:10|max:30',
             'photo_file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'phone' => 'required|unique:teachers,phone|regex:/08[0-9]{9,}/',
         ]);
 	
 		$photo_file = request('photo_file');
@@ -112,7 +113,8 @@ class TeacherController extends Controller {
     		'code' => request('code'),
     		'password' => bcrypt(request('password')),
     		'gender' => request('gender'),
-    		'education' => request('education'),
+            'education' => request('education'),
+    		'phone' => request('phone'),
             'status' => $status,
             'photo_file' => $photo_file,
     	]);
@@ -165,6 +167,7 @@ class TeacherController extends Controller {
             'gender' => 'required',
             'education' => 'required|min:10|max:30',
             'photo_file' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'phone' => 'required|regex:/08[0-9]{9,}/'
         ]);
 
         if(request('status') == 'on')$status=1; else $status=0;
@@ -177,6 +180,7 @@ class TeacherController extends Controller {
             $teacher->code = request('code');
             $teacher->gender = request('gender');
             $teacher->education = request('education');
+            $teacher->phone = request('phone');
             $teacher->status = $status;
             $teacher->save();
 
@@ -194,6 +198,7 @@ class TeacherController extends Controller {
             $teacher->code = request('code');
             $teacher->gender = request('gender');
             $teacher->education = request('education');
+            $teacher->phone = request('phone');
             $teacher->photo_file = $photo_file;
             $teacher->status = $status;
             $teacher->save();
@@ -217,5 +222,10 @@ class TeacherController extends Controller {
         //if($send_email_reset == 'success'){
         return response()->json(['status' => 'success','msg' => 'Kata sandi Guru Berhasil Dirubah']);
         //}
+    }
+
+    public function teacher_profile() {
+        $teacher = TeacherModel::where('id', \Auth::user('teacher')->id)->first();
+        return view('backend.teacher_page', compact('teacher'));
     }
 }

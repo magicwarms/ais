@@ -33,6 +33,10 @@ class FinancialController extends Controller {
         ])
         ->get();
         return Datatables::of($finance)
+        ->editColumn('remark', function ($model) {
+            $remark = str_limit($model->remark, 40, ' ...');
+            return $remark;
+        })
         ->editColumn('total_pay', function ($model) {
             $total_pay = 'Rp. '.number_format($model->total_pay, 0, ',', '.');
             return $total_pay;

@@ -32,7 +32,7 @@ class LoginTeacherController extends Controller {
                 $remembering = request('remember');
             }
         	if(Auth::guard('teacher')->attempt(['code' => $code, 'password' => $password], $remembering )) {
-                return redirect()->route('berandas')->with('success','Halo!, Selamat Datang '.Auth::guard('teacher')->user()->name);
+                return redirect()->route('teacher.profile')->with('success','Halo!, Selamat Datang '.Auth::guard('teacher')->user()->name);
         	}
         } else {
             return redirect()->back()->with('warning','Maaf, kami tidak menemukan akun anda.'); 

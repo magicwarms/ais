@@ -24,7 +24,8 @@
 	              <th class="number-order">No.</th>
                 <th>Profile</th>
                 <th>Nama</th>
-	              <th>Kode</th>
+                <th>Kode</th>
+	              <th>Handphone</th>
                 <th>Alamat</th>
 	              <th>Edukasi</th>
                 <th>Status</th>
@@ -40,6 +41,7 @@
                 <th>Profile</th>
                 <th>Nama</th>
                 <th>Kode</th>
+                <th>Handphone</th>
                 <th>Alamat</th>
                 <th>Edukasi</th>
                 <th>Status</th>
@@ -94,6 +96,11 @@
             </div>
           </div>
           <div class="uk-grid" data-uk-grid-margin>
+            <div class="uk-width-medium-1-3 uk-margin-top">
+              <label>No. Telepon</label>
+              <br>
+              <input type="text" id="phone" class="md-input label-fixed" name="phone" required placeholder="081234567890" />
+            </div>
             <div class="uk-width-medium-1-3 uk-margin-top">
               <label>Kelamin</label>
               <br>
@@ -351,6 +358,7 @@
                 $('input#code').val(data.code);
                 $('select#gender').val(data.gender);
                 $('input#education').val(data.education);
+                $('input#phone').val(data.phone);
                 $('input#photo_file').val(data.photo_file);
                 $('.status_teacher')[0].checked = data.status;
                 altair_helpers.content_preloader_hide();

@@ -19,6 +19,7 @@ Route::get('/signin', 'LoginStudentController@index')->name('signin')->middlewar
 Route::post('/process_signin','LoginStudentController@process_signin')->middleware('guest:web')->name('process_signin');
 Route::group(['middleware' => ['auth:student']], function () {
 	Route::get('/front', 'Student\StudentFrontController@index')->name('front');
+	Route::post('/change_password_students', 'Student\StudentFrontController@change_password_fro_student')->name('change.passwords');
 	Route::post('/sign_out', 'LoginStudentController@sign_out')->name('sign_out');
 });
 
@@ -38,7 +39,7 @@ Route::post('/login/process_login','LoginController@process_login')->middleware(
 Route::get('/login_teacher', 'LoginTeacherController@index')->name('login.teacher')->middleware('guest:teacher');
 Route::post('/login_teacher/process_login_teacher','LoginTeacherController@process_login_teacher')->middleware('guest')->name('teacher.login');
 Route::group(['middleware' => ['auth:teacher']], function () {
-	Route::get('/beranda_teacher', 'Root\DashboardController@home')->name('berandas');
+	Route::get('/profile', 'Root\TeacherController@teacher_profile')->name('teacher.profile');
 	Route::post('/logouts', 'LoginTeacherController@logout_teacher')->name('logouts');
 });
 

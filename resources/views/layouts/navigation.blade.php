@@ -130,22 +130,44 @@
     ?>
     <div class="menu_section">
         <ul>
-            <?php foreach ($menus as $val1) { ?>
-            <li title="{{ $val1->name }}"{!! $seg1 == $val1->function ? ' class="submenu_trigger current_section act_section"' : '' !!}>
-                <a href="#">
-                    <span class="menu_icon"><i class="material-icons">{{ $val1->icon }}</i></span>
-                    <span class="menu_title">{{ $val1->name }}</span>
-                </a>
-                <ul{!! $seg1 == $val1->function ? ' style="display: block;"' : '' !!}>
-                    <?php 
-                    foreach ($menuschild as $val2) { 
-                        if($val1->id == $val2->parent){
-                    ?>
-                    <li{!! $seg1 == $val2->function ? ' class="act_item"' : '' !!}><a href="{{ route($val2->function) }}">{{ $val2->name }}</a></li>
+
+            <?php 
+            if(empty(Auth::guard('teacher')->user()->id)){
+                foreach ($menus as $val1) {
+            ?>
+                <li title="{{ $val1->name }}"{!! $seg1 == $val1->function ? ' class="submenu_trigger current_section act_section"' : '' !!}>
+                    <a href="#">
+                        <span class="menu_icon"><i class="material-icons">{{ $val1->icon }}</i></span>
+                        <span class="menu_title">{{ $val1->name }}</span>
+                    </a>
+                    <ul{!! $seg1 == $val1->function ? ' style="display: block;"' : '' !!}>
+                        <?php 
+                        foreach ($menuschild as $val2) { 
+                            if($val1->id == $val2->parent){
+                        ?>
+                        <li{!! $seg1 == $val2->function ? ' class="act_item"' : '' !!}><a href="{{ route($val2->function) }}">{{ $val2->name }}</a></li>
+                            <?php } ?>
                         <?php } ?>
-                    <?php } ?>
-                </ul>
-            </li>
+                    </ul>
+                </li>
+            <?php } ?>
+            <?php } else { ?>
+                <li class="{{ request()->is('profile') ? 'current_section' : '' }}" title="Profile">
+                    <a href="{{ route('teacher.profile') }}">
+                        <span class="menu_icon"><i class="material-icons">&#xE87C;</i></span>
+                        <span class="menu_title">Profile</span>
+                    </a>
+                </li>
+                <li title="Tugas Siswa">
+                    <a href="#">
+                        <span class="menu_icon"><i class="material-icons">&#xE0B9;</i></span>
+                        <span class="menu_title">Tugas Siswa</span>
+                    </a>
+                    <ul>
+                        <li class="act_item"><a href="#">Daftar Tugas Siswa</a></li>
+                        <li><a href="page_chat_small.html">Chatboxes</a></li>
+                    </ul>
+                </li>
             <?php } ?>
         </ul>
     </div>
