@@ -12,6 +12,15 @@ class AbsenceModel extends Model {
 	protected $fillable = [
         'students_id', 'code','class_id','input_by','remark','absent_date'
     ];
-  	protected $dates = ['deleted_at','absent_date'];
+    
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+  	protected $dates = [
+  		'deleted_at','absent_date'
+  	];
+
   	public $timestamps = false;
 }

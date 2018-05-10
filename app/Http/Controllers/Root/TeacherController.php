@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Yajra\Datatables\Datatables;
 
 use App\Model\TeacherModel;
+use App\Model\AssignmentModel;
 use DB;
 use File;
 
@@ -213,6 +214,10 @@ class TeacherController extends Controller {
         $this->validate(request(), [
             'password' => 'required|min:8',
         ]);
+        if(request('password') != request('repassword')){
+            return response()->json(['status' => 'warning','msg' => 'Maaf, kata sandi anda tidak sama dengan konfirmasi kata sandi, mohon ulangi.']);
+        }
+
         DB::table('teachers')->where('id', request('id'))->update(['password' => bcrypt(request('password'))]);
         DB::commit();
 
@@ -226,6 +231,23 @@ class TeacherController extends Controller {
 
     public function teacher_profile() {
         $teacher = TeacherModel::where('id', \Auth::user('teacher')->id)->first();
-        return view('backend.teacher_page', compact('teacher'));
+        $assignment_students = $this->assignment_students();
+        $count_assignment = count($assignment_students);
+        return view('backend.teacher_profile', compact('teacher','assignment_students','count_assignment'));
+    }
+
+    public function assignment_students() {
+        $assignment_students = DB::table('student_assignments')
+        ->join('class', 'class.id', '=', 'student_assignments.class_id')
+        ->select([ // [ ]<-- biar lebih rapi aja
+            'student_assignments.name',
+            'student_assignments.start_assignment',
+            'student_assignments.end_assignment',
+            'student_assignments.assignment_file',
+            'class.name as class_name',
+        ])
+        ->where('student_assignments.teachers_id', \Auth::user('teacher')->id)
+        ->get();
+        return $assignment_students;
     }
 }

@@ -39,7 +39,17 @@ Route::post('/login/process_login','LoginController@process_login')->middleware(
 Route::get('/login_teacher', 'LoginTeacherController@index')->name('login.teacher')->middleware('guest:teacher');
 Route::post('/login_teacher/process_login_teacher','LoginTeacherController@process_login_teacher')->middleware('guest')->name('teacher.login');
 Route::group(['middleware' => ['auth:teacher']], function () {
-	Route::get('/profile', 'Root\TeacherController@teacher_profile')->name('teacher.profile');
+	Route::get('teacher/profile', 'Root\TeacherController@teacher_profile')->name('teacher.profile');
+	Route::prefix('assignment')->group(function () {
+		Route::get('/', 'Root\AssignmentController@index_assignment')->name('assignment');
+		Route::post('/show', 'Root\AssignmentController@show_assignment')->name('teacher.assignment.show');
+		Route::post('/save', 'Root\AssignmentController@save_assignment')->name('teacher.assignment.store');
+		Route::delete('/delete', 'Root\AssignmentController@delete_assignment')->name('teacher.assignment.delete');
+		Route::get('/edit/{assignment}', 'Root\AssignmentController@fetch_data_assignment');
+		Route::post('/update', 'Root\AssignmentController@update_assignment')->name('teacher.assignment.update');
+		Route::get('/delete_file_assignment/{assignment}', 'Root\AssignmentController@delete_file_assignment');
+	});
+	Route::post('/change_password', 'Root\TeacherController@change_password_teacher')->name('teachers.change.password');
 	Route::post('/logouts', 'LoginTeacherController@logout_teacher')->name('logouts');
 });
 

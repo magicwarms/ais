@@ -150,9 +150,9 @@
                         <?php } ?>
                     </ul>
                 </li>
-            <?php } ?>
-            <?php } else { ?>
-                <li class="{{ request()->is('profile') ? 'current_section' : '' }}" title="Profile">
+            <?php }
+            } else { ?>
+                <li class="{{ request()->is('teacher/profile') ? 'current_section' : '' }}" title="Profile">
                     <a href="{{ route('teacher.profile') }}">
                         <span class="menu_icon"><i class="material-icons">&#xE87C;</i></span>
                         <span class="menu_title">Profile</span>
@@ -164,7 +164,7 @@
                         <span class="menu_title">Tugas Siswa</span>
                     </a>
                     <ul>
-                        <li class="act_item"><a href="#">Daftar Tugas Siswa</a></li>
+                        <li class="{{ request()->is('assignment') ? 'act_item' : '' }}"><a href="{{ route('assignment') }}">Daftar Tugas Siswa</a></li>
                         <li><a href="page_chat_small.html">Chatboxes</a></li>
                     </ul>
                 </li>
