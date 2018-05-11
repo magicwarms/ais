@@ -300,7 +300,12 @@
 	               	<ul class="list-group">
 	               	@foreach($finances as $finance)
 	                <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#{{ $finance->id }}"><strong>{{ $finance->title }}</strong></a>
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#{{ $finance->id }}"><strong>{{ $finance->title }}</strong><button style="    border: none;
+					    border-radius: inherit;
+					    padding: 5px 21px;
+					    margin-left: 0px;
+					    background: none;
+					    outline: none;">Klik detail...</button></a>
 						<div class="modal fade" id="{{ $finance->id }}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">

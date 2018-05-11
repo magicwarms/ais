@@ -95,125 +95,65 @@
 						<body class="w3-light-grey">
 						<div class="w3-content" style="max-width:1400px">
 							<div class="w3-row">
-								<div class="w3-col l4 s12">
+								<div class="w3-col l12 s12">
 								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
+								  		<div class="w3-container">
+										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
+										    <div class="col-md-8">
+										      <h5><b>Penerimaan Murid Baru</b></h5>
+										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
+										      <h5></h5>
+										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
+										      <div class="w3-row">
+										        <div class="w3-col m8 s12">
+										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
+										        </div>
+										        <div class="w3-col m4 w3-hide-small">
+										        </div>
+										      </div>
+										    </div>
 									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
+								  	</div>
 								</div>
-								<div class="w3-col l4 s12">
+								<div class="w3-col l12 s12">
 								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
+								  		<div class="w3-container">
+										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
+										    <div class="col-md-8">
+										      <h5><b>Penerimaan Murid Baru</b></h5>
+										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
+										      <h5></h5>
+										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
+										      <div class="w3-row">
+										        <div class="w3-col m8 s12">
+										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
+										        </div>
+										        <div class="w3-col m4 w3-hide-small">
+										        </div>
+										      </div>
+										    </div>
 									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
+								  	</div>
 								</div>
-								<div class="w3-col l4 s12">
+								<div class="w3-col l12 s12">
 								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
+								  		<div class="w3-container">
+										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
+										    <div class="col-md-8">
+										      <h5><b>Penerimaan Murid Baru</b></h5>
+										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
+										      <h5></h5>
+										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
+										      <div class="w3-row">
+										        <div class="w3-col m8 s12">
+										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
+										        </div>
+										        <div class="w3-col m4 w3-hide-small">
+										        </div>
+										      </div>
+										    </div>
 									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
-								</div>
-								<div class="w3-col l4 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
-									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
-								</div>
-								<div class="w3-col l4 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
-									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
-								</div>
-								<div class="w3-col l4 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-									    <img src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%">
-									    <div class="w3-container">
-									      <h5><b>Penerimaan Murid Baru</b></h5>
-									      <h5>Dari <span class="w3-opacity">April 7, 2018</span></h5>
-									      <h5>Until <span class="w3-opacity">April 8, 2018</span></h5>
-									    </div>
-									    <div class="w3-container">
-									      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-									      <div class="w3-row">
-									        <div class="w3-col m8 s12">
-									          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-									        </div>
-									        <div class="w3-col m4 w3-hide-small">
-									        </div>
-									      </div>
-									    </div>
-								  	</div><hr>
+								  	</div>
 								</div>
 							</div><br>
 						</div>
@@ -224,7 +164,12 @@
 	               <ul class="list-group">
 	                  <!-- <li class="list-group-item text-muted">Payment</li> -->
 	                  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong></a> 
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong><button style="    border: none;
+					    border-radius: inherit;
+					    padding: 5px 21px;
+					    margin-left: 0px;
+					    background: none;
+					    outline: none;">Klik detail...</button></a> 
 	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
 							Konfirmasi
 						</button>
@@ -296,7 +241,12 @@
 						</div>
 					  </li>
 	                  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal2"><strong>Perlengkapan Sekolah</strong></a> 
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal2"><strong>Perlengkapan Sekolah</strong> <button style="    border: none;
+					    border-radius: inherit;
+					    padding: 5px 21px;
+					    margin-left: 0px;
+					    background: none;
+					    outline: none;">Klik detail...</button></a> 
 	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal2">
 							Konfirmasi
 						</button>
