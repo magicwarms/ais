@@ -8,32 +8,48 @@ use App\Http\Controllers\Controller;
 use App\Model\FinancialModel;
 use App\Model\ConfirmationModel;
 use App\Model\AbsenceModel;
+use App\Model\AssignmentModel;
 
 use DB;
 
 class StudentFrontController extends Controller {
     
 	public function index() {
-		$student = DB::table('students')
+		$student = $this->get_data_student();
+        $confirm_payments = $this->get_confirm_payments($student->parents_id);
+        $finances = FinancialModel::where('class_id', $student->class_id)->get();
+        $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code')->get();
+        $assignment_students = AssignmentModel::where('class_id', $student->class_id)->get();
+        $count_assignment_students = count($assignment_students);
+
+    	return view('frontend.student', compact('student','finances','confirm_payments','absences','assignment_students','count_assignment_students'));
+    }
+
+    public function get_data_student() {
+        $student = DB::table('students')
         ->join('class', 'class.id', '=', 'students.class_id')
         ->where('students.id', \Auth::user('student')->id)
         ->select(['class.name AS class_name','students.class_id', 'students.parents_id', 'students.id'])
         ->first();
-        $finances = FinancialModel::where('class_id', $student->class_id)->get();
+
+        return $student;;
+    }
+
+    public function get_confirm_payments($parents_id) {
         $confirm_payments = DB::table('confirm_payment')
         ->join('financial', 'financial.id', '=', 'confirm_payment.financial_id')
         ->join('parents', 'parents.id', '=', 'confirm_payment.parents_id')
-        ->where('confirm_payment.parents_id', $student->parents_id)
+        ->where('confirm_payment.parents_id', $parents_id)
         ->select([
-        	'parents.name AS parents_name',
-        	'confirm_payment.total_pay',
-        	'confirm_payment.created_date',
-        	'confirm_payment.remark',
-        	'confirm_payment.status',
+            'parents.name AS parents_name',
+            'confirm_payment.total_pay',
+            'confirm_payment.created_date',
+            'confirm_payment.remark',
+            'confirm_payment.status',
         ])
         ->get();
-        $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code')->get();
-    	return view('frontend.student', compact('student','finances','confirm_payments','absences'));
+
+        return $confirm_payments;
     }
 
     public function change_password_fro_student() {

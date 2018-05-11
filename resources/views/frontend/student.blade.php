@@ -81,7 +81,7 @@
 	    	<div class="col-sm-9">
 	          <ul class="nav nav-tabs" id="myTab">
 	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">4</span></a></li>
-	            <li class="nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">4</span></a></li>
+	            <li class="nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">{{ $count_assignment_students }}</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">4</span></a></li>
 	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance <i class="fa fa-book"></i></a></li>
@@ -173,118 +173,24 @@
 	                    </tr>
 	                  </thead>
 	                  <tbody id="items">
-	                    <tr class="info new">
-	                      <td>1</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="siswa2.html" class="detail">Details...</a></td>
+	                  	<?php
+	                  		foreach ($assignment_students as $key => $assignment) {
+	                  			$today = strtotime(date("Y-m-d"));
+					            $end_assignment = strtotime($assignment->end_assignment);
+					            if($today > $end_assignment){
+					            	$status = '';
+					            } else {
+					            	$status = 'info new'; 
+					            }
+	                  	?>
+	                    <tr class="{{ $status }}">
+	                      <td>{{ $key+1 }}</td>
+	                      <td class="deskripsi">{{ $assignment->remark }}</td>
+	                      <td>{{ date('d F Y', strtotime($assignment->start_assignment)) }}</td>
+	                      <td>{{ date('d F Y', strtotime($assignment->end_assignment)) }}</td>
+	                      <td><a href="" class="detail">Details.</a></td>
 	                    </tr>
-	                    <tr>
-	                      <td>2</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>3</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>4</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>5</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>6</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>7</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>8</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>9</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>10</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>11</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>12</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>13</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
-	                    <tr>
-	                      <td>14</td>
-	                      <td class="deskripsi">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	                      tempor incididunt ut labore et dolore magna aliqua.</td>
-	                      <td>20/07/2018</td>
-	                      <td>25/07/2018</td>
-	                      <td><a href="" class="detail">Details...</a></td>
-	                    </tr>
+						<?php } ?>
 	                  </tbody>
 	                </table>
 	                <hr>
@@ -300,7 +206,7 @@
 	               	<ul class="list-group">
 	               	@foreach($finances as $finance)
 	                <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#{{ $finance->id }}"><strong>{{ $finance->title }}</strong><button style="    border: none;
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#{{ $finance->id }}"><strong>{{ $finance->title }}</strong><button style="border: none;
 					    border-radius: inherit;
 					    padding: 5px 21px;
 					    margin-left: 0px;
@@ -426,6 +332,24 @@
 	        </div><!--/col-9-->
   		</div>
   	</section>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	      <!-- Modal content-->
+	    <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title" id="modal_header"></h4>
+	        </div>
+	        <div class="modal-body">
+	          <input type="text" value="Testing wak" readonly="readonly">
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	    </div>
+	    </div>
+	</div>
 
 	<script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
