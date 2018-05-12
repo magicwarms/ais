@@ -17,12 +17,16 @@ class StudentFrontController extends Controller {
 	public function index() {
 		$student = $this->get_data_student();
         $confirm_payments = $this->get_confirm_payments($student->parents_id);
+        $count_confirm_payment = count($confirm_payments);
         $finances = FinancialModel::where('class_id', $student->class_id)->get();
-        $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code')->get();
+        $count_finance = count($finances);
+        $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code','remark')->get();
         $assignment_students = AssignmentModel::where('class_id', $student->class_id)->get();
         $count_assignment_students = count($assignment_students);
+        $events = $this->get_data_event();
+        $count_event = count($events);
 
-    	return view('frontend.student', compact('student','finances','confirm_payments','absences','assignment_students','count_assignment_students'));
+    	return view('frontend.student', compact('student','finances','count_finance','confirm_payments','count_confirm_payment','absences','assignment_students','count_assignment_students','events','count_event'));
     }
 
     public function get_data_student() {
@@ -50,6 +54,14 @@ class StudentFrontController extends Controller {
         ->get();
 
         return $confirm_payments;
+    }
+
+    public function get_data_event() {
+        $event = DB::table('event_news')
+        ->whereRaw('now() BETWEEN start_event AND end_event')
+        ->get();
+
+        return $event;
     }
 
     public function change_password_fro_student() {

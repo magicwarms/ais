@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('guest:web');
 Route::get('/signin', 'LoginStudentController@index')->name('signin')->middleware('guest:web');
 Route::post('/process_signin','LoginStudentController@process_signin')->middleware('guest:web')->name('process_signin');
 Route::group(['middleware' => ['auth:student']], function () {
-	Route::get('/front', 'Student\StudentFrontController@index')->name('front');
+	Route::get('/students', 'Student\StudentFrontController@index')->name('front');
 	Route::post('/change_password_students', 'Student\StudentFrontController@change_password_fro_student')->name('change.passwords');
 	Route::post('/sign_out', 'LoginStudentController@sign_out')->name('sign_out');
 });
@@ -179,6 +179,17 @@ Route::group(['middleware' => ['auth:web','check_access_menu']], function () {
 		Route::delete('/delete', 'Root\AbsenceController@delete_absence')->name('absence.delete');
 		Route::get('/edit/{absence}', 'Root\AbsenceController@fetch_data_absence');
 		Route::put('/update', 'Root\AbsenceController@update_absence')->name('absence.update');
+	});
+
+	//event routes
+	Route::prefix('event')->group(function () {
+		Route::get('/', 'Root\EventController@index_event')->name('event');
+		Route::post('/show', 'Root\EventController@show_event')->name('event.show');
+		Route::post('/save', 'Root\EventController@save_event')->name('event.store');
+		Route::delete('/delete', 'Root\EventController@delete_event')->name('event.delete');
+		Route::get('/edit/{event}', 'Root\EventController@fetch_data_event');
+		Route::post('/update', 'Root\EventController@update_event')->name('event.update');
+		Route::get('/delete_file_event/{event}', 'Root\EventController@delete_file_event')->name('event.delete_file_event');
 	});
 
 });

@@ -74,16 +74,16 @@
 	          </ul>
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Task</strong></span> 125</li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Payment</strong></span> 13</li>
+	            <li class="list-group-item text-right"><span class="pull-left"><strong>Task</strong></span> {{ $count_assignment_students }}</li>
+	            <li class="list-group-item text-right"><span class="pull-left"><strong>Payment</strong></span> {{ $count_finance }}</li>
 	          </ul>
 	        </div>
 	    	<div class="col-sm-9">
 	          <ul class="nav nav-tabs" id="myTab">
-	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">4</span></a></li>
+	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">{{ $count_event }}</span></a></li>
 	            <li class="nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">{{ $count_assignment_students }}</span></a></li>
-	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
-	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">4</span></a></li>
+	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">{{ $count_finance }}</span></a></li>
+	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">{{ $count_confirm_payment }}</span></a></li>
 	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance <i class="fa fa-book"></i></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
@@ -94,66 +94,22 @@
 						<body class="w3-light-grey">
 						<div class="w3-content" style="max-width:1400px">
 							<div class="w3-row">
+							@foreach($events as $event)
 								<div class="w3-col l12 s12">
 								  	<div class="w3-card-4 w3-margin w3-white">
 								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
+										    <img class="col-md-4" src="{{ asset('storage/'.$event->event_file) }}" alt="{{ $event->title }}" style="width:100%; padding: 15px;">
 										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
+										      <h5><b>{{ $event->title }}</b></h5>
+										      <h5>From <span class="w3-opacity">{{ date('d F Y', strtotime($event->start_event)) }}</span>&nbsp; Till <span class="w3-opacity">{{ date('d F Y', strtotime($event->end_event)) }}</span></h5>
+										      <div class="eventDescription">
+										      	{{ $event->description }}
 										      </div>
 										    </div>
 									    </div>
 								  	</div>
 								</div>
-								<div class="w3-col l12 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
-										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
-										      </div>
-										    </div>
-									    </div>
-								  	</div>
-								</div>
-								<div class="w3-col l12 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
-										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
-										      </div>
-										    </div>
-									    </div>
-								  	</div>
-								</div>
+							@endforeach
 							</div><br>
 						</div>
 					</div>
@@ -276,8 +232,9 @@
 						<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
 							<thead>
 								<tr>
-									<th>Name &amp; Date</th>
-									<th>{{ Auth::guard('student')->user()->name }}</th>
+									<th>Tanggal</th>
+									<th>Kode</th>
+									<th>Keterangan</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -294,6 +251,7 @@
 								<tr>
 									<td>{{ date('d F Y', strtotime($absence->absent_date)) }}</td>
 									<td>{!! $code !!}</td>
+									<td>{{ $absence->remark }}</td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -352,6 +310,14 @@
 	</div>
 
 	<script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
+	<script src="{{ asset('frontend/js/readmore.min.js') }}"></script>
+	<script type="text/javascript">
+		$('.eventDescription').readmore({
+			speed: 570,
+			moreLink: '<div class="w3-row"><div class="w3-col m8 s12"><p><a href="#"><button class="w3-button w3-padding-large w3-white w3-border"><b>Selengkapnya »</b></button></a></p></div><div class="w3-col m4 w3-hide-small"></div></div>',
+			lessLink: '<div class="w3-row"><div class="w3-col m8 s12"><p><a href="#"><button class="w3-button w3-padding-large w3-white w3-border"><b>Tutup x</b></button></a></p></div><div class="w3-col m4 w3-hide-small"></div></div>'
+		});
+	</script>
 	<script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/pagination.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
@@ -369,6 +335,7 @@
 	<script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/vide/vide.min.js') }}"></script>
-
+	
+	
 </body>
 </html>
