@@ -49,16 +49,6 @@
   	<section id="siswa-prof" class="section-padding"> 
 		<div class="container">
 			<div class="row photo">
-				<div class="col-md-2">
-					<?php
-						if(!empty(Auth::guard('student')->user()->photo_file)) {
-			              $photo_file = asset('storage/'.Auth::guard('student')->user()->photo_file);
-			            } else {
-			              $photo_file = asset('frontend/img/photo.png');
-			            }
-					?>
-					<img src="{{ $photo_file }}" alt="{{ Auth::guard('parent')->user()->name }}">
-				</div>
 				<div class="col-md-10 nama">
 					<h3>{{ Auth::guard('parent')->user()->name }}</h3>
 					<hr class="bottom-line">
@@ -69,12 +59,10 @@
 	  		<div class="col-sm-3">
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Profile <i class="fa fa-user-circle"></i></li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Class</strong></span> playgroup</li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> {{ Auth::guard('parent')->user()->last_login->diffForHumans() }}</li>
+	            <li class="list-group-item text-right"><span class="pull-left"><strong>Terakhir Login</strong></span> {{ Auth::guard('parent')->user()->last_login->diffForHumans() }}</li>
 	          </ul>
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Task</strong></span> 125</li>
 	            <li class="list-group-item text-right"><span class="pull-left"><strong>Payment</strong></span> 13</li>
 	          </ul>
 	          
@@ -82,10 +70,10 @@
 	    	<div class="col-sm-9">
 	          
 	          <ul class="nav nav-tabs" id="myTab">
-	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">4</span></a></li>
-	            <li class="active nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">4</span></a></li>
-	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">4</span></a></li>
-	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<span class="badge badge-info">4</span></a></li>
+	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">{{ $count_event }}</span></a></li>
+	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">{{ $count_finance }}</span></a></li>
+	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">{{ $count_confirm_payment }}</span></a></li>
+	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<span class="badge badge-info">{{ $count_assignment_students }}</span></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
 	              
@@ -95,85 +83,42 @@
 						<body class="w3-light-grey">
 						<div class="w3-content" style="max-width:1400px">
 							<div class="w3-row">
+							@foreach($events as $event)
 								<div class="w3-col l12 s12">
 								  	<div class="w3-card-4 w3-margin w3-white">
 								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
+										    <img class="col-md-4" src="{{ asset('storage/'.$event->event_file) }}" alt="{{ $event->title }}" style="width:100%; padding: 15px;">
 										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
+										      <h5><b>{{ $event->title }}</b></h5>
+										      <h5>From <span class="w3-opacity">{{ date('d F Y', strtotime($event->start_event)) }}</span>&nbsp; Till <span class="w3-opacity">{{ date('d F Y', strtotime($event->end_event)) }}</span></h5>
+										      <div class="eventDescription">
+										      	{{ $event->description }}
 										      </div>
 										    </div>
 									    </div>
 								  	</div>
 								</div>
-								<div class="w3-col l12 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
-										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
-										      </div>
-										    </div>
-									    </div>
-								  	</div>
-								</div>
-								<div class="w3-col l12 s12">
-								  	<div class="w3-card-4 w3-margin w3-white">
-								  		<div class="w3-container">
-										    <img class="col-md-4" src="{{ asset('frontend/img/logo.png') }}" alt="Nature" style="width:100%; padding: 15px;">
-										    <div class="col-md-8">
-										      <h5><b>Penerimaan Murid Baru</b></h5>
-										      <h5>From <span class="w3-opacity">April 7, 2018</span>&nbsp Till <span class="w3-opacity">April 8, 2018</span></h5>
-										      <h5></h5>
-										      <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at.</p>
-										      <div class="w3-row">
-										        <div class="w3-col m8 s12">
-										          <p><a href="blog-single.html"><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></a></p>
-										        </div>
-										        <div class="w3-col m4 w3-hide-small">
-										        </div>
-										      </div>
-										    </div>
-									    </div>
-								  	</div>
-								</div>
+							@endforeach
 							</div><br>
 						</div>
 					</div>
 	            </div><!--/tab-pane-->
 	            <div class="tab-pane" id="payment">
-	               <h2></h2>
+	            	<br>
+	            	<div id="output"></div>
 	               <ul class="list-group">
-	                  <!-- <li class="list-group-item text-muted">Payment</li> -->
+	                @foreach($finances as $finance)
 	                  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong><button style="    border: none;
+	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#{{ $finance->id }}"><strong>{{ $finance->title }}</strong><button style="border: none;
 					    border-radius: inherit;
 					    padding: 5px 21px;
 					    margin-left: 0px;
 					    background: none;
 					    outline: none;">Klik detail...</button></a> 
-	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
+	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#confirm-{{ $finance->id }}">
 							Konfirmasi
 						</button>
-						<div class="modal fade" id="defaultModal1" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+						<div class="modal fade" id="{{ $finance->id }}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -181,8 +126,7 @@
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<div class="modal-body">
-										<p style="text-align: left;">Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
-										Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
+										<p style="text-align: left;">{{ $finance->remark }}</p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
@@ -190,287 +134,53 @@
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+						<div class="modal fade" id="confirm-{{ $finance->id }}" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
+										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran - {{ $finance->title }}</h4>
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<div class="modal-body">
-										<form id="demo-form" class="mb-4" novalidate="novalidate">
+										<form method="POST" class="mb-4 form_input_confirmation" enctype="multipart/form-data">
 											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
+											<input type="hidden" name="financial_id" id="financial_id" value="{{ $finance->id }}">
+											<input type="hidden" name="parents_id" value="{{ \Auth::user('parent')->id }}">
 											<div class="form-group row align-items-center">
 												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
+													<input type="text" name="total_pay" class="form-control" placeholder="Total yang harus dibayar..." required="required" />
 												</div>
 											</div>
 											<div class="form-group row align-items-center">
 												<div class="col-sm-9">
-													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
+													{{ Form::select('students_id', $student_parent, null, array('class' =>'md-input', 'placeholder' => 'Pilih Anak', 'id' => 'students_id','required')) }}
 												</div>
 											</div>
 											<div class="form-group row align-items-center">
 												<div class="col-lg-6">
 													<div class="fileupload fileupload-new" data-provides="fileupload">
 														<div class="input-append">
-															<input type="file" />
+															<input type="file" name="confirm_file" accept="image/png, image/jpg, image/jpeg"/>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-9">
-													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
+													<textarea rows="5" name="remark" class="form-control" placeholder="Keterangan..." required></textarea>
 												</div>
 											</div>
+										</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary">Send</button>
+											</div>
 										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Send</button>
-									</div>
 								</div>
 							</div>
 						</div>
 					  </li>
-	                  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal2"><strong>Perlengkapan Sekolah</strong> <button style="    border: none;
-					    border-radius: inherit;
-					    padding: 5px 21px;
-					    margin-left: 0px;
-					    background: none;
-					    outline: none;">Klik detail...</button></a> 
-	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal2">
-							Konfirmasi
-						</button>
-						<div class="modal fade" id="defaultModal2" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body ul-li" style="text-align: left;">
-										<p>Anda diharuskan membayar uang perlengkapan sekolah sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
-										<br>dimana rinciannya sebagai berikut:</p>
-										<ul>
-											<li>Baju Sekolah : Rp.100.000</li>
-											<li>Uang Buku 	 : Rp.50.000</li>
-											<li>Uang Gedung  : Rp.50.000</li>
-										</ul>
-										<p>Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal fade" id="formModal2" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body">
-										<form id="demo-form" class="mb-4" novalidate="novalidate">
-											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-lg-6">
-													<div class="fileupload fileupload-new" data-provides="fileupload">
-														<div class="input-append">
-															<input type="file" />
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-9">
-													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					  </li>
-					  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal1"><strong>Pembayaran SPP</strong></a> 
-	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
-							Konfirmasi
-						</button>
-						<div class="modal fade" id="defaultModal1" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body">
-										<p style="text-align: left;">Anda diharuskan membayar uang SPP sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
-										Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body">
-										<form id="demo-form" class="mb-4" novalidate="novalidate">
-											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-lg-6">
-													<div class="fileupload fileupload-new" data-provides="fileupload">
-														<div class="input-append">
-															<input type="file" />
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-9">
-													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					  </li>
-	                  <li class="list-group-item text-right">
-	                  	<a href="#" class="pull-left" data-toggle="modal" data-target="#defaultModal3"><strong>Perlengkapan Sekolah</strong></a> 
-	                  	<button class="btn btn-primary" data-toggle="modal" data-target="#formModal3">
-							Konfirmasi
-						</button>
-						<div class="modal fade" id="defaultModal3" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body ul-li" style="text-align: left;">
-										<p>Anda diharuskan membayar uang perlengkapan sekolah sebesar Rp.200.000 sebelum tanggal yang telah ditentukan oleh pihak sekolah yaitu tanggal 18/12/2018.
-										<br>dimana rinciannya sebagai berikut:</p>
-										<ul>
-											<li>Baju Sekolah : Rp.100.000</li>
-											<li>Uang Buku 	 : Rp.50.000</li>
-											<li>Uang Gedung  : Rp.50.000</li>
-										</ul>
-										<p>Jika anda telah membayar uang SSP silakan konfirmasi bukti pembayaran anda dengan mengklik tombol konfirmasi dan mengisi data serta mengirimkan bukti transfer.</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal fade" id="formModal3" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="formModalLabel">Konfirmasi Pembayaran</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body">
-										<form id="demo-form" class="mb-4" novalidate="novalidate">
-											<h5 class="form-list">Silakan isi form bukti pembayaran berikut : </h5>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama orang tua..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Nama siswa..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-sm-9">
-													<input type="text" name="number" class="form-control" placeholder="Total yang harus dibayar..." />
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<div class="col-lg-6">
-													<div class="fileupload fileupload-new" data-provides="fileupload">
-														<div class="input-append">
-															<input type="file" />
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-9">
-													<textarea rows="5" class="form-control" placeholder="Keterangan..." required></textarea>
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					  </li>
+					@endforeach
 	                </ul> 
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="history_payment">
@@ -490,94 +200,25 @@
 											</tr>
 										</thead>
 										<tbody>
+										@foreach($confirm_payments as $confirm)
+											<?php 
+											if($confirm->status == 1) {
+												$status = 'On Process';
+											} else if ($confirm->status == 2) {
+												$status = 'Completed';
+											} else {
+												$status = 'Reject';
+											}
+											?>
 											<tr>
-												<td>Hesty Purwadinata</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Pembayaran SPP</td>
-												<td class="text-left">Complete</td>
+												<td>{{ $confirm->parents_name }}</td>
+												<td>{{ $confirm->students_name }}</td>
+												<td class="text-left">{{ 'Rp. '.number_format($confirm->total_pay, 0, ',', '.') }}</td>
+												<td class="text-left">{{ date('d F Y', strtotime($confirm->created_date)) }}</td>
+												<td class="text-left">{{ $confirm->remark }}</td>
+												<td class="text-left">{{ $status }}</td>
 											</tr>
-											<tr>
-												<td>Dian Sasongko</td>
-												<td class="text-left">Wulan</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Perlengkapan Sekolah</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Pembayaran SPP</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Wulan</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Perlengkapan Sekolah</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Pembayaran SPP</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Wulan</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Keperluan Sekolah</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Keperluan Sekolah</td>
-												<td class="text-left">Complete</td>			
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Wulan</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Pembayaran SPP</td>
-												<td class="text-left">Complete</td>
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Keperluan Sekolah</td>
-												<td class="text-left">Complete</td>						
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Wulan</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Pembayaran SPP</td>
-												<td class="text-left">Complete</td>			
-											</tr>
-											<tr>
-												<td>Rian Nurmanto</td>
-												<td class="text-left">Damar</td>
-												<td class="text-left">Rp.350.000</td>
-												<td class="text-left">12/07/2018</td>
-												<td class="text-left">Keperluan Sekolah</td>
-												<td class="text-left">Complete</td>
-											</tr>
+										@endforeach
 										</tbody>
 									</table>
 								</div>
@@ -676,7 +317,49 @@
 	</section>
 
 <script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
+<script src="{{ asset('frontend/js/readmore.min.js') }}"></script>
+<script type="text/javascript">
+	$('.eventDescription').readmore({
+		speed: 570,
+		moreLink: '<div class="w3-row"><div class="w3-col m8 s12"><p><a href="#"><button class="w3-button w3-padding-large w3-white w3-border"><b>Selengkapnya »</b></button></a></p></div><div class="w3-col m4 w3-hide-small"></div></div>',
+		lessLink: '<div class="w3-row"><div class="w3-col m8 s12"><p><a href="#"><button class="w3-button w3-padding-large w3-white w3-border"><b>Tutup x</b></button></a></p></div><div class="w3-col m4 w3-hide-small"></div></div>'
+	});
+</script>
 <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('frontend/js/pagination.js') }}"></script>
+<script type="text/javascript">
+	var finance_id = $('#financial_id').val();
+	$(".form_input_confirmation").on('submit',function() {
+      $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-Token': $('input[name="_token"]').val()
+        },
+        url: "{{ route('parents.confirm') }}",
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: new FormData($(this)[0]),
+        dataType: 'JSON',
+        success: function(result) {
+          $('.form_input_confirmation')[0].reset();
+          $('#confirm-'+finance_id).modal('toggle');
+          if(result.status=='success'){
+            $('#output').html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Sukses!</strong>' +result.msg+'</div>')
+          } else {
+          	$('#output').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Kesalahan!</strong> '+result.msg+'</div>')
+          }
+        },
+        error: function (result) {
+        	$('#confirm-'+finance_id).modal('toggle');
+        	var response = JSON.parse(result.responseText)
+	          	$.each(response.errors, function (key, value) {
+	            $('#output').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Kesalahan!</strong> '+value+'</div>')
+          	});
+        }
+      });
+      event.preventDefault();
+    });
+</script>
 </body>
 </html>

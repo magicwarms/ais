@@ -141,9 +141,11 @@ class FinancialController extends Controller {
         $finance = DB::table('confirm_payment')
         ->join('financial', 'financial.id', '=', 'confirm_payment.financial_id')
         ->join('parents', 'parents.id', '=', 'confirm_payment.parents_id')
+        ->join('students', 'students.id', '=', 'confirm_payment.students_id')
         ->select([ // [ ]<-- biar lebih rapi aja
             'financial.title',
             'parents.name AS parents_name',
+            'students.name AS students_name',
             'confirm_payment.id',
             'confirm_payment.confirm_file',
             'confirm_payment.remark',
@@ -201,19 +203,21 @@ class FinancialController extends Controller {
         ->where('confirm_payment.id', $id)
         ->join('financial', 'financial.id', '=', 'confirm_payment.financial_id')
         ->join('parents', 'parents.id', '=', 'confirm_payment.parents_id')
+        ->join('students', 'students.id', '=', 'confirm_payment.students_id')
         ->select([ // [ ]<-- biar lebih rapi aja
             'financial.title',
             'parents.name AS parents_name',
+            'students.name AS students_name',
             'confirm_payment.confirm_file',
             'confirm_payment.remark',
             'confirm_payment.total_pay',
             'confirm_payment.remark_admin',
         ])
         ->first();
-
         $output = array(
             'title'    =>  $confirm->title,
             'parents_name'     =>  $confirm->parents_name,
+            'students_name'     =>  $confirm->students_name,
             'confirm_file'     =>  $confirm->confirm_file,
             'remark'     =>  $confirm->remark,
             'total_pay'     =>  $confirm->total_pay,

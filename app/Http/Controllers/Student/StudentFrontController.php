@@ -30,6 +30,7 @@ class StudentFrontController extends Controller {
     }
 
     public function get_data_student() {
+        
         $student = DB::table('students')
         ->join('class', 'class.id', '=', 'students.class_id')
         ->where('students.id', \Auth::user('student')->id)

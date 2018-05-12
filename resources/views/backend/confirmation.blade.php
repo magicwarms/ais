@@ -25,6 +25,7 @@
 	              <th class="number-order">No.</th>
 	              <th>Pembayaran</th>
                 <th>Orang Tua</th>
+                <th>Anak</th>
 	              <th>Status</th>
                 <th>Created</th>
 	              <th>Updated</th>
@@ -36,6 +37,7 @@
 	              <th class="number-order">No.</th>
                 <th>Pembayaran</th>
                 <th>Orang Tua</th>
+                <th>Anak</th>
                 <th>Status</th>
                 <th>Created</th>
                 <th>Updated</th>
@@ -84,20 +86,25 @@
             <input type="hidden" name="_method" id="method" value="PUT">
             <input type="hidden" id="id" name="id">
             <div class="uk-grid" data-uk-grid-margin>
-                <div class="uk-width-medium-1-3 uk-margin-top">
+                <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Pembayaran</label>
                   <br>
                   <input type="text" id="financial_name" class="md-input label-fixed" required readonly="readonly" />
                 </div>
-                <div class="uk-width-medium-1-3 uk-margin-top">
+                <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Orang Tua</label>
                   <br>
                   <input type="text" id="parents_name" class="md-input label-fixed" required readonly="readonly"/>
                 </div>
-                <div class="uk-width-medium-1-3 uk-margin-top">
+                <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Total Pembayaran</label>
                   <br>
                   <input type="text" id="total_pay" class="md-input label-fixed" required/>
+                </div>
+                <div class="uk-width-medium-1-4 uk-margin-top">
+                  <label>Anak</label>
+                  <br>
+                  <input type="text" id="students_name" class="md-input label-fixed" required/>
                 </div>
             </div>
             <div class="uk-grid" data-uk-grid-margin>
@@ -168,6 +175,7 @@
                 { data: 'DT_Row_Index', searchable: false, "width": "15px", "className": "text-center"},
                 { data: 'title'},
                 { data: 'parents_name'},
+                { data: 'students_name'},
                 { data: 'status', name: 'status'},
                 { data: 'created_date'},
                 { data: 'updated_date'},
@@ -228,6 +236,7 @@
               $('input#id').val(id);
               $('input#financial_name').val(data.title).prop('readonly', true);
               $('input#parents_name').val(data.parents_name).prop('readonly', true);
+              $('input#students_name').val(data.students_name).prop('readonly', true);
               $('#confirm_file').html('<a href="storage/'+data.confirm_file+'" target="_blank"><i class="material-icons md-36">content_copy</i><br>Filename: '+data.title+'</a>');
               $('textarea#remark').val(data.remark).prop('readonly', true);
               $('input#total_pay').val(data.total_pay).prop('readonly', true);

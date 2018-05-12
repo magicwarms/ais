@@ -70,7 +70,7 @@
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Profil <i class="fa fa-user-circle"></i></li>
 	            <li class="list-group-item text-right"><span class="pull-left"><strong>Kelas</strong></span> {{ $student->class_name }}</li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Last seen</strong></span> {{ Auth::guard('student')->user()->last_login->diffForHumans() }}</li>
+	            <li class="list-group-item text-right"><span class="pull-left"><strong>Terakhir Login</strong></span> {{ Auth::guard('student')->user()->last_login->diffForHumans() }}</li>
 	          </ul>
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>

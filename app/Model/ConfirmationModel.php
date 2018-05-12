@@ -8,7 +8,7 @@ class ConfirmationModel extends Model {
     
 	protected $table = 'confirm_payment';
 	protected $fillable = [
-        'financial_id', 'parents_id', 'confirm_file','remark','total_pay','remark_admin','status'
+        'financial_id', 'parents_id', 'students_id','confirm_file','remark','total_pay','remark_admin','status'
     ];
 
     public $timestamps = false;

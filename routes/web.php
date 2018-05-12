@@ -27,8 +27,10 @@ Route::group(['middleware' => ['auth:student']], function () {
 Route::get('/signin_parent', 'LoginParentController@index')->name('signin_parent')->middleware('guest:web');
 Route::post('/process_signin_parent','LoginParentController@process_signin')->middleware('guest:web')->name('process_signin_parent');
 Route::group(['middleware' => ['auth:parent']], function () {
-	Route::get('/parents', 'Parent\ParentFrontController@index')->name('parents');
+	Route::get('/parents', 'Parent\ParentFrontController@index_parent')->name('parents');
 	Route::post('/sign_out_parent', 'LoginParentController@sign_out_parent')->name('sign_out_parent');
+	Route::post('/process_confirm', 'Parent\ParentFrontController@process_confirm')->name('parents.confirm');
+
 });
 
 //admin login
