@@ -220,13 +220,7 @@ class TeacherController extends Controller {
 
         DB::table('teachers')->where('id', request('id'))->update(['password' => bcrypt(request('password'))]);
         DB::commit();
-
-        // $admin_data = UserAdminModel::select('email','name')->where('id', request('id'))->first();
-        // $send_email_reset = $this->send_email_reset_password($admin_data->email, $admin_data->name);
-
-        //if($send_email_reset == 'success'){
         return response()->json(['status' => 'success','msg' => 'Kata sandi Guru Berhasil Dirubah']);
-        //}
     }
 
     public function teacher_profile() {
@@ -239,6 +233,7 @@ class TeacherController extends Controller {
     public function assignment_students() {
         $assignment_students = DB::table('student_assignments')
         ->join('class', 'class.id', '=', 'student_assignments.class_id')
+        ->where('student_assignments.teachers_id', \Auth::user('teacher')->id)
         ->select([ // [ ]<-- biar lebih rapi aja
             'student_assignments.name',
             'student_assignments.start_assignment',
@@ -246,7 +241,6 @@ class TeacherController extends Controller {
             'student_assignments.assignment_file',
             'class.name as class_name',
         ])
-        ->where('student_assignments.teachers_id', \Auth::user('teacher')->id)
         ->get();
         return $assignment_students;
     }

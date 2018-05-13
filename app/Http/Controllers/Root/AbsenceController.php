@@ -41,8 +41,10 @@ class AbsenceController extends Controller {
             $code = $model->code;
             if($code == 1){
                 $code = '<span class="uk-badge uk-badge-danger">SAKIT</span>';
+            } elseif($code == 2) {
+                $code ='<span class="uk-badge uk-badge-warning">IZIN</span>';
             } else {
-                $code='<span class="uk-badge uk-badge-warning">IZIN</span>';
+                $code = '<span class="uk-badge uk-badge-danger">TANPA KETERANGAN</span>';
             }
             return $code;
         })

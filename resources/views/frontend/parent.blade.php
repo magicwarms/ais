@@ -63,7 +63,7 @@
 	          </ul>
 	          <ul class="list-group">
 	            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-	            <li class="list-group-item text-right"><span class="pull-left"><strong>Payment</strong></span> 13</li>
+	            <li class="list-group-item text-right"><span class="pull-left"><strong>Payment</strong></span> {{ $count_finance }}</li>
 	          </ul>
 	          
 	        </div><!--/col-3-->
@@ -73,7 +73,7 @@
 	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">{{ $count_event }}</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">{{ $count_finance }}</span></a></li>
 	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">{{ $count_confirm_payment }}</span></a></li>
-	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<span class="badge badge-info">{{ $count_assignment_students }}</span></a></li>
+	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance<span class="badge badge-info">{{ $count_absent_students }}</span></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
 	              
@@ -197,6 +197,7 @@
 												<th class="text-left">Due Date</th>
 												<th class="text-left">Keterangan</th>
 												<th class="text-left">Payment Status</th>
+												<th class="text-left">Ket. Admin</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -217,6 +218,7 @@
 												<td class="text-left">{{ date('d F Y', strtotime($confirm->created_date)) }}</td>
 												<td class="text-left">{{ $confirm->remark }}</td>
 												<td class="text-left">{{ $status }}</td>
+												<td class="text-left">{{ $confirm->remark_admin }}</td>
 											</tr>
 										@endforeach
 										</tbody>
@@ -231,82 +233,60 @@
 						<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
 							<thead>
 								<tr>
-									<th>Name &amp; Date</th>
-									<th>Kriswanto</th>
+									<th>No.</th>
+									<th>Nama</th>
+									<th>Kelas</th>
+									<th>Tgl. Absen</th>
+									<th>Kode Absen</th>
 								</tr>
 							</thead>
 							<tbody>
+							@foreach($absent_students as $key => $absence)
+								<?php
+									if($absence->code == 1){
+						                $code = '<span class="badge badge-primary">Sakit</span>';
+						            } elseif($absence->code == 2) {
+						                $code ='<span class="badge badge-success">Izin</span>';
+						            } else {
+						                $code = '<span class="badge badge-warning">Tanpa Keterangan</span>';
+						            }
+								?>
 								<tr>
-									<td>01/03/2018</td>
-									<td><span class="badge badge-dark">Sakit</span></td>
+									<td>{{ $key+1 }}</td>
+									<td>{{ $absence->students_name }}</td>
+									<td>{{ $absence->class_name }}</td>
+									<td>{{ date('d F Y', strtotime($absence->absent_date)) }}</td>
+									<td>{!! $code !!}</td>
 								</tr>
-								<tr>
-									<td>02/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>03/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>04/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>05/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>06/031028</td>
-									<td><span class="badge badge-danger">Tanpa keterangan</span></td>
-								</tr>
-								<tr>
-									<td>07/031028</td>
-									<td><span class="badge badge-info">Izin</span></td>
-								</tr>
-								<tr>
-									<td>08/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>09/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>03/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
-								<tr>
-									<td>10/031028</td>
-									<td><i class="fa fa-check"></i></td>
-								</tr>
+							@endforeach
 							</tbody>
 						</table>
 					</div>
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="settings">
                   <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>Reset Password</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Retype Password </h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="fa fa-save"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="fa fa-reset"></i> Reset</button>
-                            </div>
-                      </div>
-              	</form>
+	                  <form class="form" action="{{ route('change.passwords.parent') }}" method="POST">
+	                  	{{ csrf_field() }}
+	                      <div class="form-group">
+	                          <div class="col-xs-6">
+	                              <label for="first_name"><h4>Reset Password</h4></label>
+	                              <input type="password"  name="password" class="form-control" pattern="^\S{8,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Minimal 8 karakter' : ''); if(this.checkValidity()) form.repassword.pattern = this.value;" id="password" required="required" placeholder="Ketik password kamu">
+	                          </div>
+	                      </div>
+	                      <div class="form-group">
+	                          <div class="col-xs-6">
+	                            <label for="last_name"><h4>Retype Password </h4></label>
+	                              <input type="password" name="repassword" class="form-control" pattern="^\S{8,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Mohon samakan kata sandi anda seperti kata sandi disamping' : '');" id="repassword" required="" placeholder="Ketik sekali lagi password kamu">
+	                          </div>
+	                      </div>
+	                      <div class="form-group">
+	                           <div class="col-xs-12">
+	                                <br>
+	                              	<button class="btn btn-lg btn-success" type="submit"><i class="fa fa-save"></i> Save</button>
+	                               	<button class="btn btn-lg" type="reset"><i class="fa fa-reset"></i> Reset</button>
+	                            </div>
+	                      </div>
+	              	</form>
               </div>
 	               
               </div><!--/tab-pane-->

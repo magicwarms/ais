@@ -51,6 +51,7 @@ class StudentFrontController extends Controller {
             'confirm_payment.created_date',
             'confirm_payment.remark',
             'confirm_payment.status',
+            'confirm_payment.remark_admin',
         ])
         ->get();
 

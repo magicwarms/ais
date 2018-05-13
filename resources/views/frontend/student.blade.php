@@ -201,6 +201,7 @@
 												<th class="text-left">Tgl Pembayaran</th>
 												<th class="text-left">Keterangan</th>
 												<th class="text-left">Payment Status</th>
+												<th class="text-left">Ket. Admin</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -218,6 +219,7 @@
 												<td class="text-left">{{ date('d F Y', strtotime($confirm->created_date)) }}</td>
 												<td class="text-left">{{ $confirm->remark }}</td>
 												<td class="text-left">{{ $status }}</td>
+												<td class="text-left">{{ $confirm->remark_admin }}</td>
 											</tr>
 										@endforeach
 										</tbody>

@@ -25,7 +25,6 @@
                 <th>Profile</th>
                 <th>Nama</th>
                 <th>Kode</th>
-	              <th>Handphone</th>
                 <th>Alamat</th>
 	              <th>Edukasi</th>
                 <th>Status</th>
@@ -41,7 +40,6 @@
                 <th>Profile</th>
                 <th>Nama</th>
                 <th>Kode</th>
-                <th>Handphone</th>
                 <th>Alamat</th>
                 <th>Edukasi</th>
                 <th>Status</th>

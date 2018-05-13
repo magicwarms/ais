@@ -42,7 +42,7 @@
                 <ul id="user_profile_tabs_content" class="uk-switcher uk-margin">
                     <li>
                         <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
-                            <div class="uk-width-large-1-1">
+                            <div class="uk-width-large-1-2">
                                 <h4 class="heading_c uk-margin-small-bottom">Contact Info</h4>
                                 <ul class="md-list md-list-addon">
                                     <li>
@@ -59,18 +59,18 @@
                                             <i class="md-list-addon-icon material-icons">perm_phone_msg</i>
                                         </div>
                                         <div class="md-list-content">
-                                            <span class="md-list-heading">Handphone</span>
-                                            <span class="uk-text-small uk-text-muted">{{ $teacher->phone }}</span>
+                                            <span class="md-list-heading">Alamat</span>
+                                            <span class="uk-text-small uk-text-muted">{{ $teacher->address }}</span>
                                         </div>
                                     </li>
                                     <li>
                                     	<?php
                                     		$gender = $teacher->gender;
                                     		if($gender == 1){
-								                $gender = 'Laki-laki';
-								            } else {
-								                $gender= 'Perempuan';
-								            }
+            								                $gender = 'Laki-laki';
+            								            } else {
+            								                $gender= 'Perempuan';
+            								            }
                                     	?>
                                         <div class="md-list-addon-element">
                                         	<i class="md-list-addon-icon material-icons">face</i>

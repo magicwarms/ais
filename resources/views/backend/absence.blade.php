@@ -80,6 +80,7 @@
                   <option value="" disabled="disabled">Pilih Absen</option>
                   <option value="1">Sakit</option>
                   <option value="2">Izin</option>
+                  <option value="3">Tanpa Keterangan</option>
               </select>
             </div>
           </div>

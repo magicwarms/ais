@@ -26,8 +26,10 @@ class ParentFrontController extends Controller {
         $assignment_students = AssignmentModel::where('class_id', $student->class_id)->get();
         $count_assignment_students = count($assignment_students);
         $student_parent = StudentModel::where('status', 1)->where('parents_id', \Auth::user('parent')->id)->pluck('name','id');
+        $absent_students = $this->get_data_absent_students();
+        $count_absent_students = count($absent_students);
 
-    	return view('frontend.parent', compact('events','count_event','finances','count_finance','confirm_payments','count_confirm_payment','assignment_students','count_assignment_students','student_parent'));
+    	return view('frontend.parent', compact('events','count_event','finances','count_finance','confirm_payments','count_confirm_payment','assignment_students','count_assignment_students','student_parent','absent_students','count_absent_students'));
     }
 
     public function get_data_student() {
@@ -61,10 +63,28 @@ class ParentFrontController extends Controller {
             'confirm_payment.created_date',
             'confirm_payment.remark',
             'confirm_payment.status',
+            'confirm_payment.remark_admin',
         ])
         ->get();
 
         return $confirm_payments;
+    }
+
+    public function get_data_absent_students(){
+        $absences = DB::table('absent_students')
+        ->join('students', 'students.id', '=', 'absent_students.students_id')
+        ->join('class', 'class.id', '=', 'absent_students.class_id')
+        ->where('students.parents_id', \Auth::user('parent')->id)
+        ->select([
+            'students.name AS students_name',
+            'class.name AS class_name',
+            'absent_students.code',
+            'absent_students.remark',
+            'absent_students.absent_date',
+        ])
+        ->get();
+
+        return $absences;
     }
 
     public function process_confirm() {
@@ -102,5 +122,15 @@ class ParentFrontController extends Controller {
 
 		DB::commit();
 	    return response()->json(['status' => 'success','msg' => 'Data Konfirmasi Pembayaran Berhasil Ditambahkan']);
+    }
+
+    public function change_password_fro_parent() {
+        DB::beginTransaction();
+        $this->validate(request(), [
+            'password' => 'required|min:8',
+        ]);
+        DB::table('parents')->where('id', \Auth::guard('parent')->user()->id)->update(['password' => bcrypt(request('password'))]);
+        DB::commit();
+        return redirect()->route('parents')->with('success','Kata sandi kamu berhasil dirubah');
     }
 }
