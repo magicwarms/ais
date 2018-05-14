@@ -114,7 +114,7 @@
     <div class="sidebar_main_header">
         <div class="sidebar_logo">
             <a href="" class="sSidebar_hide sidebar_logo_large">
-                <img class="logo_regular" src="{{ asset('templates/img/logo_main.png') }}" alt="" height="15" width="71"/>
+                <img class="logo_regular" src="{{ asset('templates/img/logo_main1.png') }}" alt="" width="100%"/>
                 <img class="logo_light" src="{{ asset('templates/img/logo_main_white.png') }}" alt="" height="15" width="71"/>
             </a>
             <a href="" class="sSidebar_show sidebar_logo_small">
