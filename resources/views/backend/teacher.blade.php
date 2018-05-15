@@ -63,6 +63,7 @@
               <div class="md-card">
                 <div class="md-card-content" id="profile_picture_teacher">
                     <input type="file" id="photo_file" class="md-input" name="photo_file" accept="image/png, image/jpg, image/jpeg">
+                    <label class="uk-text-danger uk-text-italic">Max. File 2MB</label>
                 </div>
               </div>
             </div>

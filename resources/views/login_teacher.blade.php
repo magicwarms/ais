@@ -34,10 +34,8 @@
                         <div class="login_page_info uk-height-1-1" style="background-image: url('{{ asset('templates/img/others/sabri-tuzcu-331970.jpg') }}')">
                             <div class="info_content">
                                 <h1 class="heading_b">Login Guru</h1>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut culpa cumque eaque earum error esse exercitationem fuga, fugiat harum perferendis praesentium quasi qui, repellendus sapiente, suscipit totam! Eaque, excepturi!
-                                <p>
-                                    <a class="md-btn md-btn-success md-btn-small md-btn-wave" href="javascript:void(0)">More info</a>
-                                </p>
+                                Silakan login akun anda dengan menggunakan alamat email yang telah terdaftar dan masukkan password anda dengan benar, jika anda lupa password silakan menghubungi admin agar bisa me-reset password anda,
+                                terima kasih.
                             </div>
                         </div>
                     </div>
