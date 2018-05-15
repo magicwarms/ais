@@ -114,3 +114,10 @@ nav.navbar.navbar-default.navbar-fixed-top.parents {
     list-style: inside;
     margin-bottom: 10px;
 }
+.nav-tabs>li>a{
+    background: #ffca00;
+}
+
+.row.photo {
+    background: #051d38;
+}
