@@ -4,6 +4,7 @@
   <!-- common css / default css -->
     <link rel="stylesheet" href="{{ asset('bower_components/uikit/css/uikit.almost-flat.min.css') }}" media="all">
     <link rel="stylesheet" href="{{ asset('templates/css/main.min.css') }}" media="all">
+    <link rel="stylesheet" href="{{ asset('templates/css/custom-admin.css') }}" media="all">
     <link rel="stylesheet" href="{{ asset('templates/css/themes/themes_combined.min.css') }}" media="all">
 @endsection
 

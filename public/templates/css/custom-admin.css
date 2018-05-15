@@ -3,4 +3,8 @@
     overflow: hidden;
     height: 100%;
 }
+a.sSidebar_hide.sidebar_logo_large img {
+    position: relative;
+    margin-top: 2px;
+}
 
