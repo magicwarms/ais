@@ -13,7 +13,7 @@ class TeacherModel extends Authenticatable {
     protected $guard = 'teacher';
     protected $table = 'teachers';
 	protected $fillable = [
-        'name', 'address', 'birthday','code','gender','education','status','photo_file','password'
+        'name', 'address', 'birthday','code','gender','education','status','photo_file','password','phone'
     ];
     /**
      * The attributes that should be mutated to dates.
