@@ -144,8 +144,71 @@
 	                      <td class="deskripsi">{{ $assignment->remark }}</td>
 	                      <td>{{ date('d F Y', strtotime($assignment->start_assignment)) }}</td>
 	                      <td>{{ date('d F Y', strtotime($assignment->end_assignment)) }}</td>
-	                      <td><a href="" class="detail">Details.</a></td>
+	                      <td><a href="" class="detail" data-toggle="modal" data-target="#formModal1">Details.</a></td>
 	                    </tr>
+	                    <div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModal1Label" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="formModal1Label">Silakan Upload File/Tugas Yang Telah Anda Kerjakan !!!</h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<div class="modal-body">
+										<h5><strong>Deskripsi :</strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. </h5>
+										<form id="demo-form" class="mb-4" novalidate="novalidate">
+											<div class="form-group row align-items-center">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Download file tugas</label>
+												<div class="col-sm-9">
+													<a class="link-download" href="download/dragon ball.txt" download>Download File</a>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Judul</label>
+												<div class="col-sm-9">
+													<input type="text" name="name" class="form-control" placeholder="Ketik Judul Tugas..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Mata Pelajaran</label>
+												<div class="col-sm-9">
+													<input type="email" name="email" class="form-control" placeholder="Ketik Mata Pelajaran..." required/>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Batas Waktu tugas</label>
+												<div class="col-sm-9">
+													<h5>From  	: 12-08-2018</h5>
+													<h5>Untill	: 19-08-2018</h5>
+												</div>
+											</div>
+											<div class="form-group row align-items-center">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Keterangan</label>
+												<div class="col-sm-9">
+													<textarea></textarea>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label class="col-sm-3 text-left text-sm-right mb-0">Upload File</label>
+												<div class="col-sm-9">
+													<div class="upload-btn-wrapper">
+													  <span class="btn btn-success btn-file">
+															<span class="fileupload-exists">Change</span>
+															<span class="fileupload-new">Select file</span>
+															<input type="file" />
+														</span>
+												  	</div>			
+												</div>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Send</button>
+									</div>
+								</div>
+							</div>
+						</div>
 						<?php } ?>
 	                  </tbody>
 	                </table>
