@@ -48,6 +48,13 @@
   	</nav>
   	<section id="siswa-prof" class="section-padding"> 
 		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="alert alert-success">
+						<strong>Well done!</strong> Tugasmu sudah  berhasil dikirim! <a href="" class="alert-link">Terima kasih </a>.
+					</div>
+				</div>
+			</div>
 			<div class="row photo">
 				<div class="col-md-2">
 					<?php
