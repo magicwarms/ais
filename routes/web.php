@@ -22,6 +22,8 @@ Route::group(['middleware' => ['auth:student']], function () {
 	Route::get('/students', 'Student\StudentFrontController@index')->name('front');
 	Route::post('/change_password_students', 'Student\StudentFrontController@change_password_fro_student')->name('change.passwords');
 	Route::post('/sign_out', 'LoginStudentController@sign_out')->name('sign_out');
+	Route::post('/upload_task_student', 'Student\AssignmentUploadController@process_upload_task_student')->name('upload.task.student');
+	Route::get('/fetch/{assignment_id}', 'Student\StudentFrontController@fetch_data_task');
 });
 
 //parent route
@@ -54,6 +56,11 @@ Route::group(['middleware' => ['auth:teacher']], function () {
 		Route::get('/edit/{assignment}', 'Root\AssignmentController@fetch_data_assignment');
 		Route::post('/update', 'Root\AssignmentController@update_assignment')->name('teacher.assignment.update');
 		Route::get('/delete_file_assignment/{assignment}', 'Root\AssignmentController@delete_file_assignment');
+
+		Route::get('/score', 'Root\AssignmentController@index_score')->name('assignment.score');
+		Route::post('/show_score', 'Root\AssignmentController@show_score')->name('assignment.show.score');
+		Route::get('/edit_score_upload/{assignment_upload_id}', 'Root\AssignmentController@fetch_data_assignment_upload');
+		Route::put('/update_score', 'Root\AssignmentController@update_score')->name('assignment.update.score');
 	});
 	Route::post('/change_password', 'Root\TeacherController@change_password_teacher')->name('teachers.change.password');
 	Route::post('/logouts', 'LoginTeacherController@logout_teacher')->name('logouts');

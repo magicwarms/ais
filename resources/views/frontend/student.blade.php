@@ -50,9 +50,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="alert alert-success">
-						<strong>Well done!</strong> Tugasmu sudah  berhasil dikirim! <a href="" class="alert-link">Terima kasih </a>.
-					</div>
+					<div id="output"></div> <!-- ajax response -->
 				</div>
 			</div>
 			<div class="row photo">
@@ -151,71 +149,16 @@
 	                      <td class="deskripsi">{{ $assignment->remark }}</td>
 	                      <td>{{ date('d F Y', strtotime($assignment->start_assignment)) }}</td>
 	                      <td>{{ date('d F Y', strtotime($assignment->end_assignment)) }}</td>
-	                      <td><a href="" class="detail" data-toggle="modal" data-target="#formModal1">Details.</a></td>
+	                      <?php
+	                      	$check_task = check_task_student(Auth::user('student')->id, $assignment->assignment_id);
+	                      	if($check_task != ''){
+	                      		$task = '<a href="#" class="detail">Tugas sudah terupload.</a>';
+	                      	} else {
+	                      		$task = '<a id="task_student" href="#" class="detail" data-id="'.$assignment->assignment_id.'">Detail.</a>';
+	                      	}
+	                      ?>
+	                      <td>{!! $task !!}</td>
 	                    </tr>
-	                    <div class="modal fade" id="formModal1" tabindex="-1" role="dialog" aria-labelledby="formModal1Label" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title" id="formModal1Label">Silakan Upload File/Tugas Yang Telah Anda Kerjakan !!!</h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<div class="modal-body">
-										<h5><strong>Deskripsi :</strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua. </h5>
-										<form id="demo-form" class="mb-4" novalidate="novalidate">
-											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Download file tugas</label>
-												<div class="col-sm-9">
-													<a class="link-download" href="download/dragon ball.txt" download>Download File</a>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Judul</label>
-												<div class="col-sm-9">
-													<input type="text" name="name" class="form-control" placeholder="Ketik Judul Tugas..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Mata Pelajaran</label>
-												<div class="col-sm-9">
-													<input type="email" name="email" class="form-control" placeholder="Ketik Mata Pelajaran..." required/>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Batas Waktu tugas</label>
-												<div class="col-sm-9">
-													<h5>From  	: 12-08-2018</h5>
-													<h5>Untill	: 19-08-2018</h5>
-												</div>
-											</div>
-											<div class="form-group row align-items-center">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Keterangan</label>
-												<div class="col-sm-9">
-													<textarea></textarea>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-sm-3 text-left text-sm-right mb-0">Upload File</label>
-												<div class="col-sm-9">
-													<div class="upload-btn-wrapper">
-													  <span class="btn btn-success btn-file">
-															<span class="fileupload-exists">Change</span>
-															<span class="fileupload-new">Select file</span>
-															<input type="file" />
-														</span>
-												  	</div>			
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Send</button>
-									</div>
-								</div>
-							</div>
-						</div>
 						<?php } ?>
 	                  </tbody>
 	                </table>
@@ -362,25 +305,51 @@
 	        </div><!--/col-9-->
   		</div>
   	</section>
-	
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
-	    <div class="modal-dialog">
-	      <!-- Modal content-->
-	    <div class="modal-content">
-	        <div class="modal-header">
-	          <h4 class="modal-title" id="modal_header"></h4>
-	        </div>
-	        <div class="modal-body">
-	          <input type="text" value="Testing wak" readonly="readonly">
-	        </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        </div>
-	    </div>
-	    </div>
+	<div class="modal fade" id="upload_task_modal" tabindex="-1" role="dialog" aria-labelledby="formModal1Label" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Silakan Upload File/Tugas anda.</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<h5 id="name_tugas"></h5><br>
+					<h5><strong>Mata Pelajaran: </strong>
+						{{ $assignment->subject_name }}
+					</h5><br>
+					<h5 id="deskripsi_tugas"></h5>
+					<div class="form-group row align-items-center" id="assignment_tugas"></div>
+					<div class="form-group row align-items-center">
+						<label class="col-sm-3 text-left text-sm-right mb-0">Batas Waktu tugas</label>
+						<div class="col-sm-9">
+							<h5 id="start_assignment"></h5>
+							<h5 id="end_assignment"></h5>
+						</div>
+					</div>
+					<form class="mb-4 form_upload_task_student">
+						<input type="hidden" name="students_assignment_id" id="students_assignment_id">
+						<input type="hidden" name="students_id" value="{{ Auth::user('student')->id }}">
+						<div class="form-group row align-items-center">
+							<label class="col-sm-3 text-left text-sm-right mb-0">Keterangan</label>
+							<div class="col-sm-9">
+								<textarea name="remark" id="remark"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 text-left text-sm-right mb-0">Upload File</label>
+							<div class="col-sm-9">
+								<input type="file" accept="application/msword, application/pdf, image/png, image/jpg, image/jpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint" required="required" id="assignment_file" name="assignment_file" />		
+							</div>
+						</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Send</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-
 	<script type="text/javascript" src="{{ asset('frontend/js/jquery.js') }}"></script>
 	<script src="{{ asset('frontend/js/readmore.min.js') }}"></script>
 	<script type="text/javascript">
@@ -408,6 +377,75 @@
 	<script src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/vide/vide.min.js') }}"></script>
 	
-	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on('click', '#task_student', function (e) {
+	    var id = $(this).data('id');
+	    var APP_URL = {!! json_encode(url('/')) !!}
+	    $.ajax({
+	      url: APP_URL + "/fetch/"+id,
+	      method:'GET',
+	      dataType:'json',
+	      success:function(data) {
+	        $('#name_tugas').html('<strong>Tugas: </strong>'+data.name)
+	        $('#deskripsi_tugas').html('<strong>Deskripsi: </strong>'+data.remark)
+	        $('#assignment_tugas').html('<div class="col-sm-9"><a class="link-download" href="'+data.assignment_file+'" target="_blank">Download File</a></div>')
+	        $('#start_assignment').html('From   : '+data.start_assignment)
+	        $('#end_assignment').html('Until   : '+data.end_assignment)
+	        $('input#students_assignment_id').val(id);
+	        show_modal_task();
+	      }
+	    })
+	  	e.preventDefault();
+		});
+	});
+	var assignment_id = $('#students_assignment_id').val()
+	$(".form_upload_task_student").on('submit',function() {
+      $.ajax({
+        type: 'POST',
+        headers: {
+            'X-CSRF-Token': $('input[name="_token"]').val()
+        },
+        url: "{{ route('upload.task.student') }}",
+        processData: false,
+        contentType: false,
+        cache: false,
+        data: new FormData($(this)[0]),
+        dataType: 'JSON',
+        success: function(result) {
+          $('.form_upload_task_student')[0].reset();
+          $('#upload_task_modal').modal('toggle');
+          $('#detail_task').html('<a href="#" class="detail">Tugas sudah terupload.</a>')
+          if(result.status=='success'){
+            $('#output').html('<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Sukses!</strong> ' +result.msg+'</div>')
+            reload_page()
+          } else {
+          	$('#output').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Kesalahan!</strong> '+result.msg+'</div>')
+          	reload_page()
+          }
+        },
+        error: function (result) {
+        	$('#upload_task_modal').modal('toggle');
+        	var response = JSON.parse(result.responseText)
+	          	$.each(response.errors, function (key, value) {
+	            $('#output').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Kesalahan!</strong> '+value+'</div>')
+          	});
+	        reload_page()
+        }
+      });
+      event.preventDefault();
+    });
+
+	function show_modal_task() {
+		$('#upload_task_modal').modal('show');
+	}
+
+	function reload_page() {
+		setTimeout(function(){
+			location.reload();
+		},2000);
+	}
+
+	</script>
 </body>
 </html>

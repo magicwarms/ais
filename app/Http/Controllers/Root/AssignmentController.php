@@ -9,6 +9,7 @@ use Yajra\Datatables\Datatables;
 use App\Model\AssignmentModel;
 use App\Model\AssignClassTeacherModel;
 use App\Model\SubjectModel;
+use App\Model\AssignmentUploadModel;
 
 use DB;
 use File;
@@ -255,5 +256,93 @@ class AssignmentController extends Controller {
             \Log::error($e);
             return response()->json(['status' => 'error','msg' => $e]);
         }
+    }
+
+    public function index_score() {
+
+        return view('backend.score_students');
+    }
+
+    public function show_score() {
+        $student_score = DB::table('students_assignment_upload')
+        ->join('student_assignments', 'student_assignments.id', '=', 'students_assignment_upload.students_assignment_id')
+        ->join('students', 'students.id', '=', 'students_assignment_upload.students_id')
+        ->join('subjects', 'subjects.id', '=', 'student_assignments.subjects_id')
+        ->join('class', 'class.id', '=', 'student_assignments.class_id')
+        ->where('student_assignments.teachers_id', \Auth::user('teacher')->id)
+        ->select([ // [ ]<-- biar lebih rapi aja
+            'students_assignment_upload.id',
+            'students_assignment_upload.remark',
+            'students_assignment_upload.score',
+            'students_assignment_upload.assignment_file',
+            'students_assignment_upload.created_date',
+            'students_assignment_upload.updated_date',
+            'student_assignments.name',
+            'subjects.name AS subjects_name',
+            'students.name AS student_name',
+            'class.name AS class_name',
+        ])
+        ->get();
+        return Datatables::of($student_score)
+        ->editColumn('created_date', function ($model) {
+            $created = date('d F Y H:i:s', strtotime($model->created_date));
+            return $created;
+        })
+        ->editColumn('updated_date', function ($model) {
+            $updated = $model->updated_date;
+            if($updated != null){
+              $updated = date('d F Y H:i:s', strtotime($updated));
+            } else {
+              $updated = '-';
+            }
+            return $updated;
+        })
+        ->editColumn('assignment_file', function ($model) {
+            if(!empty($model->assignment_file)) {
+              $assignment_file = asset('storage/'.$model->assignment_file);
+            } else {
+              $assignment_file = '-';
+            }
+
+            return '<a href="'.$assignment_file.'" target="_blank">
+                    <i class="material-icons md-24">content_copy</i>
+                    Filename: "'.basename($assignment_file).'"
+                    </a>';
+        })
+        ->addColumn('action', function ($model) {
+            $action = '
+                <a href="#" class="edit_data md-btn md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" data-id="'.$model->id.'">NILAI</a>
+            ';
+            return $action;
+        })
+        ->rawColumns(['action','assignment_file'])
+        ->addIndexColumn()->make(true);
+    }
+
+    function fetch_data_assignment_upload($assignment_upload_id) {
+        $assignment_upload = AssignmentUploadModel::findOrFail($assignment_upload_id);
+        $assign = '<a href="'.asset('storage/'.$assignment_upload->assignment_file).'" target="_blank">
+                    <i class="material-icons md-24">content_copy</i>
+                    Filename: "'.basename($assignment_upload->assignment_file).'"
+                    </a>';
+        $output = array(
+            'assignment_file'     =>  $assign,
+            'remark'     =>  $assignment_upload->remark,
+        );
+        echo json_encode($output);
+    }
+
+    public function update_score() {
+        DB::beginTransaction();
+        $this->validate(request(), [
+            'score' => 'required|min:1|numeric',
+        ]);
+
+        $class = AssignmentUploadModel::findOrFail(request('id'));
+        $class->score = request('score');
+        $class->save();
+
+        DB::commit();
+        return response()->json(['status' => 'success','msg' => 'Nilai Siswa Berhasil ditambahkan']);
     }
 }

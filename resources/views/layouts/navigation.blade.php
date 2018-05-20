@@ -165,7 +165,7 @@
                     </a>
                     <ul>
                         <li class="{{ request()->is('assignment') ? 'act_item' : '' }}"><a href="{{ route('assignment') }}">Daftar Tugas Siswa</a></li>
-                        <li><a href="page_chat_small.html">Chatboxes</a></li>
+                        <li class="{{ request()->is('assignment/score') ? 'act_item' : '' }}"><a href="{{ route('assignment.score') }}">Nilai Siswa</a></li>
                     </ul>
                 </li>
             <?php } ?>

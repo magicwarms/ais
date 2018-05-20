@@ -21,7 +21,7 @@ class StudentFrontController extends Controller {
         $finances = FinancialModel::where('class_id', $student->class_id)->get();
         $count_finance = count($finances);
         $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code','remark')->get();
-        $assignment_students = AssignmentModel::where('class_id', $student->class_id)->get();
+        $assignment_students = $this->get_assignment_student($student->class_id);
         $count_assignment_students = count($assignment_students);
         $events = $this->get_data_event();
         $count_event = count($events);
@@ -79,6 +79,50 @@ class StudentFrontController extends Controller {
         //if($send_email_reset == 'success'){
         return redirect()->route('front')->with('success','Kata sandi kamu berhasil dirubah');
         //}
+    }
+
+    public function get_assignment_student($class_id) {
+        $assignment_students = DB::table('student_assignments')
+        ->join('subjects', 'subjects.id', '=', 'student_assignments.subjects_id')
+        ->where('student_assignments.class_id', $class_id)
+        ->whereRaw('now() BETWEEN student_assignments.start_assignment AND student_assignments.end_assignment')
+        ->select([
+            'student_assignments.id AS assignment_id',
+            'student_assignments.name',
+            'student_assignments.assignment_file',
+            'student_assignments.remark',
+            'student_assignments.start_assignment',
+            'student_assignments.end_assignment',
+            'subjects.name AS subject_name'
+        ])
+        ->get();
+
+        return $assignment_students;
+    }
+
+    public function fetch_data_task($task_id) {
+        $task = DB::table('student_assignments')
+        ->join('subjects', 'subjects.id', '=', 'student_assignments.subjects_id')
+        ->where('student_assignments.id', $task_id)
+        ->select([
+            'student_assignments.id AS assignment_id',
+            'student_assignments.name',
+            'student_assignments.assignment_file',
+            'student_assignments.remark',
+            'student_assignments.start_assignment',
+            'student_assignments.end_assignment',
+            'subjects.name AS subject_name'
+        ])
+        ->first();
+        $output = array(
+            'name'     =>  $task->name,
+            'start_assignment'     =>  date('d F Y', strtotime($task->start_assignment)),
+            'end_assignment'     =>  date('d F Y', strtotime($task->end_assignment)),
+            'remark'     =>  $task->remark,
+            'assignment_file'     =>  $task->assignment_file,
+            'subject_name'     =>  $task->subject_name,
+        );
+        echo json_encode($output);
     }
 
 }

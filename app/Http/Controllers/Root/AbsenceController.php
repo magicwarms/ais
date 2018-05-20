@@ -35,7 +35,7 @@ class AbsenceController extends Controller {
             'absent_students.updated_date'
         ])
         ->get();
-        //dd($absence);
+        
         return Datatables::of($absence)
         ->editColumn('code', function ($model) {
             $code = $model->code;

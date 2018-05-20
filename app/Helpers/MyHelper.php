@@ -47,3 +47,13 @@ if (!function_exists('select_all_multiple_menu')){
 	    return $multiple_menu;
 	}
 }
+
+if (!function_exists('check_task_student')) {
+	function check_task_student($students_id, $assignment_id){
+		$check_task = DB::table('students_assignment_upload')
+		->where('students_assignment_id', $assignment_id)
+		->where('students_id', $students_id)
+		->first();
+	    return $check_task;
+	}
+}
