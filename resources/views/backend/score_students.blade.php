@@ -13,12 +13,21 @@
 	<h4 class="heading_a uk-margin-bottom">Beri Nilai Tugas Siswa</h4>
 	<div class="md-card">
 	  <div class="md-card-content">
+      <div class="uk-grid" data-uk-grid-margin>
+          <div class="uk-width-medium-1-6">
+              {{ Form::select('class_id', $classes, '1', array('class' => 'md-input', 'placeholder' => 'Pilih Kelas', 'id' => 'class_id','required')) }}
+          </div>
+          <div class="uk-width-medium-1-6">
+              {{ Form::select('subjects_id', $subjects, '2', array('class' => 'md-input', 'placeholder' => 'Pilih Mata Pelajaran', 'id' => 'subjects_id','required')) }}
+          </div>
+      </div>
+      <br>
 	    <ul class="uk-tab uk-tab-grid" data-uk-tab="{connect:'#tabs_4'}">
         <li class="uk-width-1-1" id="list-tab"><a href="#" class="list_score">List Nilai/Tugas Siswa</a></li>
 	    </ul>
 	    <ul id="tabs_4" class="uk-switcher uk-margin">
 	      <li>
-	        <table id="data_table" class="uk-table" cellspacing="0" width="100%">
+	        <table id="dt_tableExport_wrapper" class="uk-table" cellspacing="0" width="100%">
 	          <thead>
 	            <tr>
 	              <th class="number-order">No.</th>
@@ -120,7 +129,10 @@
     <script src="{{ asset('templates/js/pages/forms_advanced.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-        var dt = $('#data_table').DataTable({
+        var APP_URL = {!! json_encode(url('/')) !!}
+        var class_id   = $('#class_id').val();
+        var subjects_id = $('#subjects_id').val();
+        var dt = $('#dt_tableExport_wrapper').DataTable({
             orderCellsTop: true,
             responsive: true,
             processing: true,
@@ -128,9 +140,28 @@
             scrollX: true,
             searching: true,
             "autoWidth": true,
+            paging: false,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excel',
+                    pageSize: 'A4',
+                    exportOptions: {
+                      columns: [ 2, 3, 4, 5, 6, 7 ]
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    orientation: 'potrait',
+                    pageSize: 'A4',
+                    exportOptions: {
+                      columns: [ 2, 3, 4, 5, 6, 7 ]
+                    }
+                },
+            ],
             lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
             ajax: {
-                url:  "{{ route('assignment.show.score') }}",
+                url:  APP_URL + "/assignment/show_score/1/2",
                 data: { '_token' : '{{ csrf_token() }}'},
                 type: 'POST',
             },
@@ -147,6 +178,14 @@
                 { data: 'updated_date'},
                 { data: 'action', name: 'action', orderable: false, searchable: false, "width": "25px", "className": "text-center" },
             ],
+        });
+
+        $('#class_id, #subjects_id').change(function(event) {
+           altair_helpers.content_preloader_show('md');
+           var class_id   = $('#class_id').val();
+           var subjects_id = $('#subjects_id').val();
+           dt.ajax.url(APP_URL + "/assignment/show_score/"+class_id+"/"+subjects_id).load();
+           altair_helpers.content_preloader_hide();
         });
 
         $(document).on('click', '.edit_data', function (e) {
@@ -184,7 +223,7 @@
             },
             success: function(result) {
               hide_modal_score();
-              $('#data_table').DataTable().ajax.reload();
+              $('#dt_tableExport_wrapper').DataTable().ajax.reload();
               altair_helpers.content_preloader_hide();
               if(result.status=='success'){
                 UIkit.notify({

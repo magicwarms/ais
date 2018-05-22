@@ -10,6 +10,7 @@ use App\Model\AssignmentModel;
 use App\Model\AssignClassTeacherModel;
 use App\Model\SubjectModel;
 use App\Model\AssignmentUploadModel;
+use App\Model\ClassModel;
 
 use DB;
 use File;
@@ -259,17 +260,20 @@ class AssignmentController extends Controller {
     }
 
     public function index_score() {
-
-        return view('backend.score_students');
+        $classes = ClassModel::where('status', 1)->pluck('name','id');
+        $subjects = SubjectModel::where('status', 1)->pluck('name','id');
+        return view('backend.score_students', compact('classes','subjects'));
     }
 
-    public function show_score() {
+    public function show_score($class_id, $subjects_id) {
         $student_score = DB::table('students_assignment_upload')
         ->join('student_assignments', 'student_assignments.id', '=', 'students_assignment_upload.students_assignment_id')
         ->join('students', 'students.id', '=', 'students_assignment_upload.students_id')
         ->join('subjects', 'subjects.id', '=', 'student_assignments.subjects_id')
         ->join('class', 'class.id', '=', 'student_assignments.class_id')
         ->where('student_assignments.teachers_id', \Auth::user('teacher')->id)
+        ->where('student_assignments.class_id', $class_id)
+        ->where('student_assignments.subjects_id', $subjects_id)
         ->select([ // [ ]<-- biar lebih rapi aja
             'students_assignment_upload.id',
             'students_assignment_upload.remark',

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<title>Orang Tua - {{ config('app.name') }}</title>
+  	<title>Login Orang Tua - {{ config('app.name') }}</title>
   	<meta name="description" content="Australian Intercultural School made by Andhana &amp; Kriswanto">
     <meta name="keywords" content="australian intercultural school education">
     <meta name="author" content="Andhana Utama">
@@ -21,10 +21,12 @@
 
 <body id="login" class="text-center">
 	<form class="form-signin" action="{{ route('process_signin_parent') }}" method="POST">
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Gagal login!</strong> Pastikan nomor dan password anda sudah benar.
+      @if(session('warning'))
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+        <strong>{{ session('warning') }}</strong> 
       </div>
+      @endif
       <img class="mb-4" src="{{ asset('frontend/img/logo1.png') }}" alt="" width="100" height="100">
       <h1 class="h3 mb-3 font-weight-normal">ORANG TUA</h1>
       {{ csrf_field() }}
@@ -35,5 +37,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <!-- <a class="login" href="#">forgot your password ?</a> -->
   </form>
+  <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

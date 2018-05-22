@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth:teacher']], function () {
 		Route::get('/delete_file_assignment/{assignment}', 'Root\AssignmentController@delete_file_assignment');
 
 		Route::get('/score', 'Root\AssignmentController@index_score')->name('assignment.score');
-		Route::post('/show_score', 'Root\AssignmentController@show_score')->name('assignment.show.score');
+		Route::post('/show_score/{class_id}/{subjects_id}', 'Root\AssignmentController@show_score')->name('assignment.show.score');
 		Route::get('/edit_score_upload/{assignment_upload_id}', 'Root\AssignmentController@fetch_data_assignment_upload');
 		Route::put('/update_score', 'Root\AssignmentController@update_score')->name('assignment.update.score');
 	});

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<title>Siswa - {{ config('app.name') }}</title>
+  	<title>Login Siswa - {{ config('app.name') }}</title>
   	<meta name="description" content="Australian Intercultural School made by Andhana &amp; Kriswanto">
     <meta name="keywords" content="australian intercultural school education">
     <meta name="author" content="Andhana Utama">
@@ -21,10 +21,12 @@
 
 <body id="login" class="text-center">
 	<form class="form-signin" action="{{ route('process_signin') }}" method="POST">
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Gagal Login!</strong> Pastikan Nomor Induk dan password anda benar.
+      @if(session('warning'))
+      <div class="alert alert-warning alert-dismissible alert_login" role="alert">
+        <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+        <strong>{{ session('warning') }}</strong> 
       </div>
+      @endif
       <img class="mb-4" src="{{ asset('frontend/img/logo1.png') }}" alt="" width="100" height="100">
       <h1 class="h3 mb-3 font-weight-normal">SISWA</h1>
       {{ csrf_field() }}
@@ -37,6 +39,7 @@
       <!-- <a class="login" href="#">forgot your password ?</a> -->
       <a href="{{ route('signin_parent') }}" class="btn btn-md btn-primary btn-block">LOGIN ORANG TUA</a>
   </form>
-
+  <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

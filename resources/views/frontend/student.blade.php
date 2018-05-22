@@ -373,13 +373,11 @@
 	<script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/common/common.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/jquery.validation/jquery.validation.min.js') }}"></script>
-	<script src="{{ asset('frontend/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js') }}"></script>
-	<script src="{{ asset('frontend/vendor/jquery.gmap/jquery.gmap.min.js') }}"></script>
-	<script src="{{ asset('frontend/vendor/jquery.lazyload/jquery.lazyload.min.js') }}"></script>
+	<!-- <script src="{{ asset('frontend/vendor/jquery.gmap/jquery.gmap.min.js') }}"></script> -->
+	<!-- <script src="{{ asset('frontend/vendor/jquery.lazyload/jquery.lazyload.min.js') }}"></script> -->
 	<script src="{{ asset('frontend/vendor/isotope/jquery.isotope.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
 	<script src="{{ asset('frontend/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-	<script src="{{ asset('frontend/vendor/vide/vide.min.js') }}"></script>
 	
 	<script type="text/javascript">
 	$(document).ready(function(){
