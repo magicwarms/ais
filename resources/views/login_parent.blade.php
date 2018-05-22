@@ -21,6 +21,10 @@
 
 <body id="login" class="text-center">
 	<form class="form-signin" action="{{ route('process_signin_parent') }}" method="POST">
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Gagal login!</strong> Pastikan nomor dan password anda sudah benar.
+      </div>
       <img class="mb-4" src="{{ asset('frontend/img/logo1.png') }}" alt="" width="100" height="100">
       <h1 class="h3 mb-3 font-weight-normal">ORANG TUA</h1>
       {{ csrf_field() }}
