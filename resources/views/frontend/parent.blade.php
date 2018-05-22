@@ -48,6 +48,10 @@
   	</nav>
   	<section id="siswa-prof" class="section-padding"> 
 		<div class="container">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Selamat!</strong> Anda berhasil login, Oni Lestari.
+			</div>
 			<div class="row photo">
 				<div class="col-md-10 nama">
 					<h3>{{ Auth::guard('parent')->user()->name }}</h3>

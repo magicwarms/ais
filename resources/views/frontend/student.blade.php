@@ -53,6 +53,10 @@
 					<div id="output"></div> <!-- ajax response -->
 				</div>
 			</div>
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Selamat!</strong> Anda berhasil login, Dadis.
+			</div>
 			<div class="row photo">
 				<div class="col-md-2">
 					<?php
