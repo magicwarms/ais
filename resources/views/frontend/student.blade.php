@@ -318,9 +318,7 @@
 				</div>
 				<div class="modal-body">
 					<h5 id="name_tugas"></h5><br>
-					<h5><strong>Mata Pelajaran: </strong>
-						{{ $assignment->subject_name }}
-					</h5><br>
+					<h5 id="mapel_tugas"></h5><br>
 					<h5 id="deskripsi_tugas"></h5>
 					<div class="form-group row align-items-center" id="assignment_tugas"></div>
 					<div class="form-group row align-items-center">
@@ -381,6 +379,7 @@
 	      dataType:'json',
 	      success:function(data) {
 	        $('#name_tugas').html('<strong>Tugas: </strong>'+data.name)
+	        $('#mapel_tugas').html('<strong>Mata Pelajaran: </strong>'+data.subject_name)
 	        $('#deskripsi_tugas').html('<strong>Deskripsi: </strong>'+data.remark)
 	        $('#assignment_tugas').html('<div class="col-sm-9"><a class="link-download" href="'+data.assignment_file+'" target="_blank">Download File</a></div>')
 	        $('#start_assignment').html('From   : '+data.start_assignment)
