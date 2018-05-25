@@ -313,7 +313,7 @@
                         .hide()
                         .velocity('slideDown', {
                             begin: function() {
-                                $dropdown.css({'margin-top':'0'})
+                                $dropdown.css({'margin-top':''})
                             },
                             duration: 200,
                             easing: easing_swiftOut

@@ -10,3 +10,6 @@ a.sSidebar_hide.sidebar_logo_large img {
 #header_main{
 	background: #17304f;
 }
+.selectize-dropdown {
+    margin-top: 0px !important;
+}
