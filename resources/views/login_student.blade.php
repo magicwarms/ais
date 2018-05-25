@@ -27,7 +27,7 @@
         <strong>{{ session('warning') }}</strong> 
       </div>
       @endif
-      <img class="mb-4" src="{{ asset('frontend/img/logo1.png') }}" alt="" width="100" height="100">
+      <img class="mb-4" src="{{ asset('frontend/img/logo_login.png') }}" alt="" width="100" height="100">
       <h1 class="h3 mb-3 font-weight-normal">SISWA</h1>
       {{ csrf_field() }}
       <label class="sr-only">NIS</label>
