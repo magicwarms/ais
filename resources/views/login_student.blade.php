@@ -33,7 +33,7 @@
       <label class="sr-only">NIS</label>
       <input type="number" class="form-control" placeholder="Nomor Induk Siswa" name="nis" required="required" autofocus="autofocus">
       <label class="sr-only">Password</label>
-      <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+      <input type="password" pattern="^\S{8,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Minimal 8 Karakter' : '');" class="form-control" placeholder="Password" required="required" name="password">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br>
       <!-- <a class="login" href="#">forgot your password ?</a> -->
