@@ -13,7 +13,7 @@ class ParentModel extends Authenticatable {
     protected $guard = 'parent';
     protected $table = 'parents';
 	protected $fillable = [
-        'name', 'phone', 'password','address','gender','status','last_login'
+        'name', 'phone', 'email', 'password','address','gender','status','last_login'
     ];
 
     /**

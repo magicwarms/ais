@@ -8,7 +8,7 @@ class AssignSubjectTeacherModel extends Model {
     
 	protected $table = 'subject_join_teacher';
 	protected $fillable = [
-        'subjects_id', 'teachers_id'
+        'subjects_id', 'teachers_id','subject_day_time'
     ];
 
     public $timestamps = false;

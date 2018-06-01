@@ -39,7 +39,8 @@
 	          <thead>
 	            <tr>
 	              <th class="number-order">No.</th>
-	              <th>Siswa</th>
+                <th>Siswa</th>
+	              <th>NIS</th>
 	              <th>Kelas</th>
                 <th>Absen</th>
                 <th>Keterangan</th>
@@ -52,6 +53,7 @@
 	            <tr>
 	              <th class="number-order">No.</th>
                 <th>Siswa</th>
+                <th>NIS</th>
                 <th>Kelas</th>
                 <th>Absen</th>
                 <th>Keterangan</th>
@@ -127,6 +129,7 @@
     <script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
     <script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
     <!-- page specific plugins -->
+    <script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
     <!-- parsley (validation) -->
     <script>
     // load parsley config (altair_admin_common.js)
@@ -170,6 +173,7 @@
                 },
             ],
             lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
+            'pagingType': 'full_numbers_no_ellipses',
             ajax: {
                 url:  APP_URL + "/absence/show/"+1+"/"+start_date+"/"+end_date,
                 data: { '_token' : '{{ csrf_token() }}'},
@@ -178,6 +182,7 @@
             columns: [
                 { data: 'DT_Row_Index', searchable: false, "width": "15px", "className": "text-center"},
                 { data: 'students_name'},
+                { data: 'students_nis'},
                 { data: 'class_name'},
                 { data: 'code'},
                 { data: 'remark'},

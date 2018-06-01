@@ -92,6 +92,39 @@
                                     </li>
                                 </ul>
                             </div>
+
+                            <div class="uk-width-large-1-2">
+                                <h4 class="heading_c uk-margin-small-bottom">Jadwal Mengajar</h4>
+                                <table id="data_table" class="uk-table" cellspacing="0" width="100%">
+                                  <thead>
+                                    <tr>
+                                      <th class="number-order">No.</th>
+                                      <th>Mata Pelajaran</th>
+                                      <th>Waktu</th>
+                                    </tr>
+                                  </thead>
+                                  <tfoot>
+                                    <tr>
+                                      <th class="number-order">No.</th>
+                                      <th>Mata Pelajaran</th>
+                                      <th>Waktu</th>
+                                    </tr>
+                                  </tfoot>
+                                  <tbody>
+                                  <?php 
+                                    if(!empty($schedule_teacher)){
+                                      foreach ($schedule_teacher as $key => $schedule) {
+                                  ?>
+                                    <tr>
+                                      <td>{{ $key+1 }}</td>
+                                      <td>{{ $schedule->subject_name }}</td>
+                                      <td>{{ $schedule->subject_day_time }}</td>
+                                    </tr>
+                                      <?php } ?>
+                                    <?php } ?>
+                                  </tbody>
+                                </table>
+                            </div>
                         </div>
                     </li>
                     <li>
@@ -161,7 +194,19 @@
 <script src="{{ asset('templates/js/uikit_custom.min.js') }}"></script>
 <!-- altair common functions/helpers -->
 <script src="{{ asset('templates/js/altair_admin_common.min.js') }}"></script>
+<!-- datatable -->
+<script src="{{ asset('bower_components/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
+<script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
+<!-- page specific plugins -->
+<script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
+
 <script type="text/javascript">
+    $(document).ready(function(){
+        $('#data_table').DataTable({
+          'pagingType': 'full_numbers_no_ellipses',
+        });
+    });
     $(".change_password").click(function(event) {
       $.ajax({
         type: 'POST',

@@ -16,8 +16,6 @@ class StudentFrontController extends Controller {
     
 	public function index() {
 		$student = $this->get_data_student();
-        $confirm_payments = $this->get_confirm_payments($student->parents_id);
-        $count_confirm_payment = count($confirm_payments);
         $finances = FinancialModel::where('class_id', $student->class_id)->get();
         $count_finance = count($finances);
         $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code','remark')->get();
@@ -38,24 +36,6 @@ class StudentFrontController extends Controller {
         ->first();
 
         return $student;;
-    }
-
-    public function get_confirm_payments($parents_id) {
-        $confirm_payments = DB::table('confirm_payment')
-        ->join('financial', 'financial.id', '=', 'confirm_payment.financial_id')
-        ->join('parents', 'parents.id', '=', 'confirm_payment.parents_id')
-        ->where('confirm_payment.parents_id', $parents_id)
-        ->select([
-            'parents.name AS parents_name',
-            'confirm_payment.total_pay',
-            'confirm_payment.created_date',
-            'confirm_payment.remark',
-            'confirm_payment.status',
-            'confirm_payment.remark_admin',
-        ])
-        ->get();
-
-        return $confirm_payments;
     }
 
     public function get_data_event() {

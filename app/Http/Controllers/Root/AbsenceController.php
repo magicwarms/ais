@@ -27,6 +27,7 @@ class AbsenceController extends Controller {
         ->where('absent_students.class_id', $class_id)
         ->select([ // [ ]<-- biar lebih rapi aja
             'students.name AS students_name',
+            'students.nis AS students_nis',
             'class.name AS class_name',
             'absent_students.id',
             'absent_students.code',

@@ -159,6 +159,7 @@
     <script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
     <script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
     <!-- page specific plugins -->
+    <script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
     <!-- parsley (validation) -->
     <script>
     // load parsley config (altair_admin_common.js)
@@ -252,6 +253,7 @@
             searching: true,
             "autoWidth": true,
             lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
+            'pagingType': 'full_numbers_no_ellipses',
             ajax: {
                 url:  "{{ route('student.show') }}",
                 data: { '_token' : '{{ csrf_token() }}'},

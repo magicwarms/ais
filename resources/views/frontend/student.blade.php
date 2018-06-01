@@ -92,7 +92,6 @@
 	          	<li class="active nav-siswa"><a href="#event" data-toggle="tab">Event<span class="badge badge-info">{{ $count_event }}</span></a></li>
 	            <li class="nav-siswa"><a href="#task" data-toggle="tab">Task<span class="badge badge-info">{{ $count_assignment_students }}</span></a></li>
 	            <li class="nav-siswa"><a href="#payment" data-toggle="tab">Payment<span class="badge badge-info">{{ $count_finance }}</span></a></li>
-	            <li class="nav-siswa"><a href="#history_payment" data-toggle="tab">History Payment<span class="badge badge-info">{{ $count_confirm_payment }}</span></a></li>
 	            <li class="nav-siswa"><a href="#attendance" data-toggle="tab">Attendance <i class="fa fa-book"></i></a></li>
 	            <li class="nav-siswa"><a href="#settings" data-toggle="tab">Settings <i class="fa fa-cogs"></i></a></li>
 	          </ul>
@@ -204,47 +203,6 @@
 					</li>
 					@endforeach
 	                </ul> 
-	             </div><!--/tab-pane-->
-	             <div class="tab-pane" id="history_payment">
-	               <div class="row">
-						<div class="col">
-							<section class="card card-admin">
-								<div class="card-body">
-									<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
-										<thead>
-											<tr>
-												<th class="text-left">Nama Orang Tua</th>
-												<th class="text-left">Total</th>
-												<th class="text-left">Tgl Pembayaran</th>
-												<th class="text-left">Keterangan</th>
-												<th class="text-left">Payment Status</th>
-												<th class="text-left">Ket. Admin</th>
-											</tr>
-										</thead>
-										<tbody>
-										@foreach($confirm_payments as $confirm)
-											<?php 
-											if($confirm->status == 2) {
-												$status = 'Completed';
-											} else {
-												$status = 'Reject';
-											}
-											?>
-											<tr>
-												<td>{{ $confirm->parents_name }}</td>
-												<td class="text-left">{{ 'Rp. '.number_format($confirm->total_pay, 0, ',', '.') }}</td>
-												<td class="text-left">{{ date('d F Y', strtotime($confirm->created_date)) }}</td>
-												<td class="text-left">{{ $confirm->remark }}</td>
-												<td class="text-left">{{ $status }}</td>
-												<td class="text-left">{{ $confirm->remark_admin }}</td>
-											</tr>
-										@endforeach
-										</tbody>
-									</table>
-								</div>
-							</section>
-						</div>
-					</div>
 	             </div><!--/tab-pane-->
 	             <div class="tab-pane" id="attendance">
 	               <div class="card-body">

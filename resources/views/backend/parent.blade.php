@@ -24,6 +24,7 @@
 	            <tr>
 	              <th class="number-order">No.</th>
                 <th>Nama</th>
+                <th>Email</th>
 	              <th>Telepon</th>
                 <th>Alamat</th>
 	              <th>Kelamin</th>
@@ -38,6 +39,7 @@
 	            <tr>
 	              <th class="number-order">No.</th>
                 <th>Nama</th>
+                <th>Email</th>
                 <th>Telepon</th>
                 <th>Alamat</th>
                 <th>Kelamin</th>
@@ -57,17 +59,22 @@
           <input type="hidden" name="id" id="id">
           <input type="hidden" name="_method" id="method" value="POST">
           <div class="uk-grid" data-uk-grid-margin>
-            <div class="uk-width-medium-1-5 uk-margin-top">
+            <div class="uk-width-medium-1-6 uk-margin-top">
               <label>Nama Orang Tua</label>
               <br>
               <input type="text" id="name" class="md-input label-fixed" name="name" required/>
             </div>
-            <div class="uk-width-medium-1-5 uk-margin-top">
+            <div class="uk-width-medium-1-6 uk-margin-top">
+              <label>Email</label>
+              <br>
+              <input type="email" id="email" class="md-input label-fixed" name="email" required/>
+            </div>
+            <div class="uk-width-medium-1-6 uk-margin-top">
               <label>No. Telepon</label>
               <br>
               <input type="text" id="phone" class="md-input label-fixed" name="phone" required placeholder="081234567890" />
             </div>
-            <div class="uk-width-medium-1-5 uk-margin-top">
+            <div class="uk-width-medium-1-6 uk-margin-top">
               <label>Kelamin</label>
               <br>
               <select id="gender" name="gender" class="md-input">
@@ -76,13 +83,13 @@
                   <option value="2">Perempuan</option>
               </select>
             </div>
-            <div class="uk-width-medium-1-5 uk-margin-top">
+            <div class="uk-width-medium-1-6 uk-margin-top">
               <div class="parsley-row">
                 <input class="status_parent" type="checkbox" name="status">
                 <label for="switch_demo_large" class="inline-label"><b>Aktifkan Orang Tua</b></label>
               </div>
             </div>
-            <div class="uk-width-medium-1-5 uk-margin-top">
+            <div class="uk-width-medium-1-6 uk-margin-top">
               <div id="parent_password">
               <label>Kata sandi</label>
               <br>
@@ -124,6 +131,7 @@
     <script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
     <script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
     <!-- page specific plugins -->
+    <script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
     <!-- parsley (validation) -->
     <script>
     // load parsley config (altair_admin_common.js)
@@ -217,6 +225,7 @@
             searching: true,
             "autoWidth": true,
             lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
+            'pagingType': 'full_numbers_no_ellipses',
             ajax: {
                 url:  "{{ route('parent.show') }}",
                 data: { '_token' : '{{ csrf_token() }}'},
@@ -225,6 +234,7 @@
             columns: [
                 { data: 'DT_Row_Index', searchable: false, "width": "15px", "className": "text-center"},
                 { data: 'name'},
+                { data: 'email'},
                 { data: 'gender'},
                 { data: 'phone'},
                 { data: 'address'},
@@ -311,6 +321,7 @@
                 $('#input_submit_type').html('<input id="update_item" type="submit" value="UPDATE" class="md-btn md-btn-danger">');
                 $("#parent_password").hide();
                 $('input#name').val(data.name);
+                $('input#email').val(data.email);
                 $('input#phone').val(data.phone);
                 $('textarea#address').val(data.address);
                 $('select#gender').val(data.gender);

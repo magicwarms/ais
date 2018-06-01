@@ -25,6 +25,7 @@
 	              <th class="number-order">No.</th>
                 <th>Nama Guru</th>
                 <th>Mata Pelajaran</th>
+                <th>Waktu</th>
                 <th>Created</th>
 	              <th>Updated</th>
                 <th class="action-order">Action</th>
@@ -35,6 +36,7 @@
                 <th class="number-order">No.</th>
                 <th>Nama Guru</th>
                 <th>Mata Pelajaran</th>
+                <th>Waktu</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th class="action-order">Action</th>
@@ -49,15 +51,20 @@
           <input type="hidden" name="id" id="id">
           <input type="hidden" name="_method" id="method" value="POST">
           <div class="uk-grid" data-uk-grid-margin>
-            <div class="uk-width-medium-1-2 uk-margin-top">
+            <div class="uk-width-medium-1-3 uk-margin-top">
               <label>Guru</label>
               <br>
               {{ Form::select('teachers_id', $teachers, null, array('class' =>'md-input', 'placeholder' => 'Pilih Guru', 'id' => 'teachers_id','required')) }}
             </div>
-            <div class="uk-width-medium-1-2 uk-margin-top">
+            <div class="uk-width-medium-1-3 uk-margin-top">
               <label>Mata Pelajaran</label>
               <br>
               {{ Form::select('subjects_id', $subjects, null, array('class' =>'md-input', 'placeholder' => 'Pilih Mata Pelajaran', 'id' => 'subjects_id','required')) }}
+            </div>
+            <div class="uk-width-medium-1-3 uk-margin-top">
+              <label>Waktu Mengajar</label>
+              <br>
+              <input type="text" id="subject_day_time" class="md-input label-fixed" name="subject_day_time" required/>
             </div>
           </div>
           <div class="uk-width-medium-1-1 uk-margin-top">
@@ -87,6 +94,7 @@
     <script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
     <script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
     <!-- page specific plugins -->
+    <script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
     <!-- parsley (validation) -->
     <script>
     // load parsley config (altair_admin_common.js)
@@ -107,6 +115,7 @@
             searching: true,
             "autoWidth": true,
             lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
+            'pagingType': 'full_numbers_no_ellipses',
             ajax: {
                 url:  "{{ route('assign.show') }}",
                 data: { '_token' : '{{ csrf_token() }}'},
@@ -116,6 +125,7 @@
                 { data: 'DT_Row_Index', searchable: false, "width": "15px", "className": "text-center"},
                 { data: 'teacher_name'},
                 { data: 'subject_name'},
+                { data: 'subject_day_time'},
                 { data: 'created_date'},
                 { data: 'updated_date'},
                 { data: 'action', name: 'action', orderable: false, searchable: false, "width": "25px", "className": "text-center" }
@@ -202,6 +212,7 @@
                 $("#list-tab").removeClass("uk-active");
                 $('#input_submit_type').html('<input id="update_item" type="submit" value="UPDATE" class="md-btn md-btn-danger">');
                 $('input#id').val(id);
+                $('input#subject_day_time').val(data.subject_day_time);
                 $('select#subjects_id').val(data.subjects_id);
                 $('select#teachers_id').val(data.teachers_id);
                 altair_helpers.content_preloader_hide();

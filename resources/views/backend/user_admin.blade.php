@@ -28,7 +28,7 @@
       </ul>
       <ul id="tabs_4" class="uk-switcher uk-margin">
         <li>
-          <table id="dt_individual_search" class="uk-table" cellspacing="0" width="100%">
+          <table id="dt_individual_searchs" class="uk-table" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th class="number-order">No.</th>
@@ -225,6 +225,7 @@
     <script src="{{ asset('templates/js/custom/datatables/datatables.uikit.min.js') }}"></script>
     <script src="{{ asset('templates/js/pages/plugins_datatables.min.js') }}"></script>
     <!-- page specific plugins -->
+    <script src="{{ asset('templates/js/pages/full_numbers_no_ellipses.js') }}"></script>
     <!-- parsley (validation) -->
     <script>
     // load parsley config (altair_admin_common.js)
@@ -265,6 +266,11 @@
         $(document).on("click", ".md-btn2", function () {
             var userID = $(this).data('id');
             $(".uk-modal-dialog #id").val(userID);
+        });
+        $(document).ready(function (){
+           $('#dt_individual_searchs').DataTable({
+              'pagingType': 'full_numbers_no_ellipses'
+           });
         });
     </script>
     <?php $menus = select_all_multiple_menu();?>

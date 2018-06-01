@@ -72,6 +72,7 @@ class ParentController extends Controller {
         if($parent->status == 1)$status='true'; else $status='';
         $output = array(
             'name'    =>  $parent->name,
+            'email'    =>  $parent->email,
             'phone'     =>  $parent->phone,
             'address'     =>  $parent->address,
             'gender'     =>  $parent->gender,
@@ -88,11 +89,13 @@ class ParentController extends Controller {
             'phone' => 'required|unique:parents,phone|regex:/08[0-9]{9,}/',
             'password' => 'required|min:8',
             'gender' => 'required',
+            'email' => 'email',
         ]);
 	
 		if(request('status') == 'on')$status=1; else $status=0;
     	ParentModel::create([
-    		'name' => request('name'),
+            'name' => request('name'),
+    		'email' => request('email'),
     		'address' => request('address'),
     		'password' => bcrypt(request('password')),
     		'gender' => request('gender'),
@@ -126,11 +129,13 @@ class ParentController extends Controller {
             'address' => 'required|min:10',
             'phone' => 'required|regex:/08[0-9]{9,}/',
             'gender' => 'required',
+            'email' => 'email',
         ]);
 
         if(request('status') == 'on')$status=1; else $status=0;
         $parent = ParentModel::findOrFail(request('id'));
         $parent->name = request('name');
+        $parent->email = request('email');
         $parent->address = request('address');
         $parent->phone = request('phone');
         $parent->gender = request('gender');

@@ -227,7 +227,8 @@ class TeacherController extends Controller {
         $teacher = TeacherModel::where('id', \Auth::user('teacher')->id)->first();
         $assignment_students = $this->assignment_students();
         $count_assignment = count($assignment_students);
-        return view('backend.teacher_profile', compact('teacher','assignment_students','count_assignment'));
+        $schedule_teacher = $this->schedule_subject_teacher();
+        return view('backend.teacher_profile', compact('teacher','assignment_students','count_assignment','schedule_teacher'));
     }
 
     public function assignment_students() {
@@ -243,5 +244,19 @@ class TeacherController extends Controller {
         ])
         ->get();
         return $assignment_students;
+    }
+
+    public function schedule_subject_teacher() {
+        $schedule_teacher = DB::table('subject_join_teacher')
+        ->join('subjects', 'subjects.id', '=', 'subject_join_teacher.subjects_id')
+        ->join('teachers', 'teachers.id', '=', 'subject_join_teacher.teachers_id')
+        ->where('subject_join_teacher.teachers_id', \Auth::user('teacher')->id)
+        ->select([ // [ ]<-- biar lebih rapi aja
+            'subjects.name as subject_name',
+            'subject_join_teacher.subject_day_time'
+        ])
+        ->get();
+
+        return $schedule_teacher;
     }
 }
