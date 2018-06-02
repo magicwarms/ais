@@ -31,6 +31,15 @@
                         <li>
                             <h4 class="heading_a">{{ $count_assignment }} <span class="sub-heading">Tugas</span></h4>
                         </li>
+                        <?php
+                          if(!empty($count_subject)){
+                            foreach ($count_subject as $val) {
+                        ?>
+                        <li>
+                            <h4 class="heading_a">{{ $val->total_hours }} Jam<span class="sub-heading">{{ $val->subject_name }}</span></h4>
+                        </li>
+                          <?php } ?>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -118,6 +127,7 @@
                                     <tr>
                                       <td>{{ $key+1 }}</td>
                                       <td>{{ $schedule->subject_name }}</td>
+                                      <td>{{ $schedule->total_hours }}</td>
                                       <td>{{ $schedule->subject_day_time }}</td>
                                     </tr>
                                       <?php } ?>

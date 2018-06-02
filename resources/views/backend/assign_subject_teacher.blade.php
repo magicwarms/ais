@@ -26,6 +26,7 @@
                 <th>Nama Guru</th>
                 <th>Mata Pelajaran</th>
                 <th>Waktu</th>
+                <th>Total Jam</th>
                 <th>Created</th>
 	              <th>Updated</th>
                 <th class="action-order">Action</th>
@@ -37,6 +38,7 @@
                 <th>Nama Guru</th>
                 <th>Mata Pelajaran</th>
                 <th>Waktu</th>
+                <th>Total Jam</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th class="action-order">Action</th>
@@ -51,20 +53,25 @@
           <input type="hidden" name="id" id="id">
           <input type="hidden" name="_method" id="method" value="POST">
           <div class="uk-grid" data-uk-grid-margin>
-            <div class="uk-width-medium-1-3 uk-margin-top">
+            <div class="uk-width-medium-1-4 uk-margin-top">
               <label>Guru</label>
               <br>
               {{ Form::select('teachers_id', $teachers, null, array('class' =>'md-input', 'placeholder' => 'Pilih Guru', 'id' => 'teachers_id','required')) }}
             </div>
-            <div class="uk-width-medium-1-3 uk-margin-top">
+            <div class="uk-width-medium-1-4 uk-margin-top">
               <label>Mata Pelajaran</label>
               <br>
               {{ Form::select('subjects_id', $subjects, null, array('class' =>'md-input', 'placeholder' => 'Pilih Mata Pelajaran', 'id' => 'subjects_id','required')) }}
             </div>
-            <div class="uk-width-medium-1-3 uk-margin-top">
+            <div class="uk-width-medium-1-4 uk-margin-top">
               <label>Waktu Mengajar</label>
               <br>
               <input type="text" id="subject_day_time" class="md-input label-fixed" name="subject_day_time" required/>
+            </div>
+            <div class="uk-width-medium-1-4 uk-margin-top">
+              <label>Total Jam</label>
+              <br>
+              <input type="number" id="total_hours" class="md-input label-fixed" name="total_hours" required/>
             </div>
           </div>
           <div class="uk-width-medium-1-1 uk-margin-top">
@@ -126,6 +133,7 @@
                 { data: 'teacher_name'},
                 { data: 'subject_name'},
                 { data: 'subject_day_time'},
+                { data: 'total_hours'},
                 { data: 'created_date'},
                 { data: 'updated_date'},
                 { data: 'action', name: 'action', orderable: false, searchable: false, "width": "25px", "className": "text-center" }
@@ -213,6 +221,7 @@
                 $('#input_submit_type').html('<input id="update_item" type="submit" value="UPDATE" class="md-btn md-btn-danger">');
                 $('input#id').val(id);
                 $('input#subject_day_time').val(data.subject_day_time);
+                $('input#total_hours').val(data.total_hours);
                 $('select#subjects_id').val(data.subjects_id);
                 $('select#teachers_id').val(data.teachers_id);
                 altair_helpers.content_preloader_hide();

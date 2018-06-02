@@ -29,6 +29,7 @@ class AssignSubjectTeacherController extends Controller {
             'teachers.name as teacher_name',
             'subject_join_teacher.id',
             'subject_join_teacher.subject_day_time',
+            'subject_join_teacher.total_hours',
             'subject_join_teacher.created_date',
             'subject_join_teacher.updated_date'
         ])
@@ -65,6 +66,7 @@ class AssignSubjectTeacherController extends Controller {
             'subjects_id' => 'required',
             'teachers_id' => 'required',
             'subject_day_time' => 'required',
+            'total_hours' => 'required|numeric'
         ]);
         $exist_assign = DB::table('subject_join_teacher')->where('subjects_id',request('subjects_id'))->where('teachers_id',request('teachers_id'))->first();
         if(!empty($exist_assign)){
@@ -73,7 +75,8 @@ class AssignSubjectTeacherController extends Controller {
         AssignSubjectTeacherModel::create([
             'subjects_id' => request('subjects_id'),
             'teachers_id' => request('teachers_id'),
-            'subject_day_time' => request('subject_day_time')
+            'subject_day_time' => request('subject_day_time'),
+            'total_hours' => request('total_hours')
         ]);
 
         DB::commit();
@@ -85,7 +88,8 @@ class AssignSubjectTeacherController extends Controller {
         $output = array(
             'subjects_id'    =>  $assign->subjects_id,
             'teachers_id'     =>  $assign->teachers_id,
-            'subject_day_time'     =>  $assign->subject_day_time
+            'subject_day_time'     =>  $assign->subject_day_time,
+            'total_hours'     =>  $assign->total_hours
         );
         echo json_encode($output);
     }
@@ -96,18 +100,14 @@ class AssignSubjectTeacherController extends Controller {
             'subjects_id' => 'required',
             'teachers_id' => 'required',
             'subject_day_time' => 'required',
+            'total_hours' => 'required|numeric'
         ]);
-        $exist_assign = DB::table('subject_join_teacher')->where('subjects_id',request('subjects_id'))->where('teachers_id',request('teachers_id'))->first();
-        if(!empty($exist_assign)){
-            if($exist_assign->subject_day_time == request('subject_day_time')){
-                return response()->json(['status' => 'warning','msg' => 'Maaf, sepertinya jadwal guru yang anda inputkan sudah ada, mohon ulangi kembali.']);
-            }
-        }
         
         $assign = AssignSubjectTeacherModel::findOrFail(request('id'));
         $assign->subjects_id = request('subjects_id');
         $assign->teachers_id = request('teachers_id');
         $assign->subject_day_time = request('subject_day_time');
+        $assign->total_hours = request('total_hours');
         $assign->save();
 
         DB::commit();
