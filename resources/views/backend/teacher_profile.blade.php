@@ -109,6 +109,7 @@
                                     <tr>
                                       <th class="number-order">No.</th>
                                       <th>Mata Pelajaran</th>
+                                      <th>Jam</th>
                                       <th>Waktu</th>
                                     </tr>
                                   </thead>
@@ -116,6 +117,7 @@
                                     <tr>
                                       <th class="number-order">No.</th>
                                       <th>Mata Pelajaran</th>
+                                      <th>Jam</th>
                                       <th>Waktu</th>
                                     </tr>
                                   </tfoot>
