@@ -200,7 +200,7 @@
               </select>
             </div>
           </div>
-          <div class="uk-width-medium-1-1 uk-margin-top">
+          <div class="uk-width-medium-1-1 uk-margin-top admin-save">
            <div class="uk-form-row">
              <span class="uk-input-group-addon"><input type="submit" value="SAVE" class="md-btn md-btn-primary"></span>
            </div>
