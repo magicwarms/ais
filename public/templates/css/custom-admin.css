@@ -13,3 +13,6 @@ a.sSidebar_hide.sidebar_logo_large img {
 .selectize-dropdown {
     margin-top: 0px !important;
 }
+.uk-width-medium-1-1.uk-margin-top {
+    height: 200px;
+}

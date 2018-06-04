@@ -179,7 +179,7 @@
             <?php } ?>
           </div>
           <div class="uk-grid" data-uk-grid-margin>
-            <div class="uk-width-medium-1-1 uk-margin-top">
+            <div class="uk-width-medium-1-1 uk-margin-top" >
               <label>Menu Management (Multiple)</label>
               <br>
               <select id="select_menu" name="menu_admin_id[]" multiple required="required">
