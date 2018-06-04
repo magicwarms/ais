@@ -26,8 +26,8 @@
 	              <th class="number-order">No.</th>
 	              <th>Kelas</th>
                 <th>Judul</th>
-                <th>Keterangan</th>
                 <th>Jumlah Dibayar</th>
+                <th>Keterangan</th>
                 <th>Created</th>
 	              <th>Updated</th>
 	              <th class="action-order">Action</th>
@@ -38,8 +38,8 @@
 	              <th class="number-order">No.</th>
                 <th>Kelas</th>
                 <th>Judul</th>
-                <th>Keterangan</th>
                 <th>Jumlah Dibayar</th>
+                <th>Keterangan</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th class="action-order">Action</th>
