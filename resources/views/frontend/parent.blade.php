@@ -128,11 +128,50 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h4 class="modal-title" id="defaultModalLabel">Deskripsi Lengkap</h4>
+										<h4 class="modal-title" id="defaultModalLabel">{{ $finance->title }}</h4>
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<div class="modal-body">
-										<p style="text-align: left;">{{ $finance->remark }}</p>
+										<table class="table table-striped">
+										    <thead>
+										      <tr>
+										        <th>Fee</th>
+										        <th>Total</th>
+										        <th>Diskon</th>
+										        <th>Ket.</th>
+										        <th>Subtotal.</th>
+										      </tr>
+										    </thead>
+										    <tbody>
+										<?php
+									    	foreach ($finance_detail as $detail_finance) {
+									    		foreach ($detail_finance as $key_detail => $detail) {
+									    		if($finance->id == $detail->financial_id){
+									    			if($detail->discount == 0){
+									    				$discount = '-';
+									    			} else {
+									    				$discount = $detail->discount.'%';
+									    			}
+									    ?>
+										      <tr>
+										        <td>{{ $detail->fee }}</td>
+										        <td>{{ number_format($detail->total, 0, ',', '.') }}</td>
+										        <td>{{ $discount }}</td>
+										        <td>{{ $detail->remark }}</td>
+										        <td>{{ number_format($detail->subtotal, 0, ',', '.')}}</td>
+										      </tr>
+												<?php } ?>
+												<?php } ?>
+											<?php } ?>
+										    </tbody>
+										  </table>
+										<p style="text-align: left;"><b>Keterangan:</b></p>
+										<hr>
+										<p style="text-align: left;">{{ $finance->remark }}</p>\
+										<hr>
+										<p style="text-align: left;"><b>Total yang Harus dibayar: </b></p>
+										<hr>
+										<p style="text-align: left;">Rp. {{ number_format($finance->total_pay, 0, ',', '.') }}</p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
