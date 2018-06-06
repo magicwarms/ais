@@ -9,6 +9,7 @@ use App\Model\FinancialModel;
 use App\Model\ConfirmationModel;
 use App\Model\AbsenceModel;
 use App\Model\AssignmentModel;
+use App\Model\FinanceDetailModel;
 
 use DB;
 
@@ -16,7 +17,11 @@ class StudentFrontController extends Controller {
     
 	public function index() {
 		$student = $this->get_data_student();
-        $finances = FinancialModel::where('class_id', $student->class_id)->get();
+        $finances = FinancialModel::where('students_id', $student->id)->get();
+
+        foreach ($finances as $key => $detail) {
+            $finance_detail[$key] = FinanceDetailModel::where('financial_id', $detail->id)->get();
+        }
         $count_finance = count($finances);
         $absences = AbsenceModel::where('students_id', $student->id)->select('absent_date','code','remark')->get();
         $assignment_students = $this->get_assignment_student($student->class_id);
@@ -24,7 +29,7 @@ class StudentFrontController extends Controller {
         $events = $this->get_data_event();
         $count_event = count($events);
 
-    	return view('frontend.student', compact('student','finances','count_finance','confirm_payments','count_confirm_payment','absences','assignment_students','count_assignment_students','events','count_event'));
+    	return view('frontend.student', compact('student','finances','finance_detail','count_finance','confirm_payments','count_confirm_payment','absences','assignment_students','count_assignment_students','events','count_event'));
     }
 
     public function get_data_student() {
