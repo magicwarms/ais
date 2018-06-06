@@ -123,6 +123,7 @@ Route::group(['middleware' => ['auth:web','check_access_menu']], function () {
 		Route::post('/update', 'Root\StudentController@update_student')->name('student.update');
 		Route::post('/change_password', 'Root\StudentController@change_password_student')->name('student.change.password');
 		Route::get('/delete_profile_picture/{student}', 'Root\StudentController@delete_profile_picture_student')->name('student.delete_profile_picture');
+		Route::get('/getstudents/{id}', 'Root\StudentController@get_students_from_class');
 	});
 
 	//parent routes

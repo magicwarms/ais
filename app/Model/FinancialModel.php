@@ -8,7 +8,7 @@ class FinancialModel extends Model {
 
     protected $table = 'financial';
 	protected $fillable = [
-        'class_id', 'title', 'remark','total_pay','input_by'
+        'students_id', 'title', 'remark','total_pay','input_by','class_id'
     ];
 
     public $timestamps = false;

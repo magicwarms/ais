@@ -251,4 +251,11 @@ class StudentController extends Controller {
         return response()->json(['status' => 'success','msg' => 'Kata sandi Murid Berhasil Dirubah']);
         //}
     }
+
+    public function get_students_from_class($id) {
+        $students = StudentModel::select('id','name')->where('class_id', $id)->get();
+        if(!$students->isEmpty()){
+            return $students;
+        } 
+    }
 }

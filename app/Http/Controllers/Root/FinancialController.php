@@ -9,6 +9,7 @@ use Yajra\Datatables\Datatables;
 use App\Model\FinancialModel;
 use App\Model\ClassModel;
 use App\Model\ConfirmationModel;
+use App\Model\FinanceDetailModel;
 
 use DB;
 
@@ -21,12 +22,14 @@ class FinancialController extends Controller {
 
     public function show_finance() {
         $finance = DB::table('financial')
+        ->join('students', 'students.id', '=', 'financial.students_id')
         ->join('class', 'class.id', '=', 'financial.class_id')
         ->select([ // [ ]<-- biar lebih rapi aja
             'financial.id',
             'financial.title',
             'financial.remark',
             'financial.total_pay',
+            'students.name AS students_name',
             'class.name AS class_name',
             'financial.created_date',
             'financial.updated_date'
@@ -68,31 +71,70 @@ class FinancialController extends Controller {
 
     function fetch_data_finance($finance_id) {
         $finance = FinancialModel::findOrFail($finance_id);
+        $finance_detail = FinanceDetailModel::where('financial_id',$finance_id)->get();
         $output = array(
+            'students_id'    =>  $finance->students_id,
             'class_id'    =>  $finance->class_id,
             'title'     =>  $finance->title,
             'remark'     =>  $finance->remark,
-            'total_pay'     =>  $finance->total_pay
+            'total_pay'     =>  $finance->total_pay,
+            'finance_detail' => $finance_detail
         );
         echo json_encode($output);
     }
 
 	public function save_finance() {
 		DB::beginTransaction();
-		$this->validate(request(), [
+        $this->validate(request(), [
+            'students_id' => 'required',
             'class_id' => 'required',
             'title' => 'required|min:3',
             'remark' => 'min:3',
-            'total_pay' => 'required|min:3',
         ]);
 
-    	FinancialModel::create([
-    		'class_id' => request('class_id'),
-    		'title' => request('title'),
-    		'remark' => request('remark'),
-    		'total_pay' => request('total_pay'),
-    		'input_by' => \Auth::user()->id
-    	]);
+        $finance = new FinancialModel();
+        $finance->class_id = request('class_id');
+        $finance->students_id = request('students_id');
+        $finance->class_id = request('class_id');
+        $finance->title = request('title');
+        $finance->remark = request('remark');
+        $finance->input_by = \Auth::user()->id;
+        if(!$finance->save()){
+            return response()->json(['status' => 'danger','msg' => 'Data Pembayaran Tidak Berhasil Ditambahkan, silakan ulangi kembali atau hubungi developer anda.']);
+        }
+
+        $total_pay = 0;
+        foreach (request('subtotal') as $subtotal) {
+            $total_pay += $subtotal; 
+        }
+
+        $finance_update = FinancialModel::findOrFail($finance->id);
+        $finance_update->total_pay = $total_pay;
+        $finance_update->save();
+
+        //START save data di table finance_detail
+        foreach (request('fee') as $key => $value) {
+            $total = 0;
+            $discount = 0;
+            $subtotal = 0;
+            if(request('total')[$key]>0)$total = request('total')[$key];
+            if(request('discount')[$key]>0)$discount = request('discount')[$key];
+            if(request('subtotal')[$key]>0)$subtotal = request('subtotal')[$key];
+            if(request('remark_detail')[$key] != ''){
+                $remark_detail = request('remark_detail')[$key];
+            } else {
+                $remark_detail = '-';
+            }
+            FinanceDetailModel::create([
+                'financial_id' => $finance->id, //last id save
+                'fee' => $value,
+                'total' => $total,
+                'discount' => $discount,
+                'subtotal' => $subtotal,
+                'remark' => $remark_detail
+            ]);
+        }
+        // END save data di table finance_detail
 
     	DB::commit();
         return response()->json(['status' => 'success','msg' => 'Data Pembayaran Berhasil Ditambahkan']);
@@ -103,7 +145,10 @@ class FinancialController extends Controller {
 		try {
             $finance = FinancialModel::findOrFail(request('id'));
 	        $finance->delete();
-
+            //start delete finance detail
+            $delete_finance_detail = FinanceDetailModel::where('financial_id', request('id'));
+            $delete_finance_detail->delete();
+            //end delete finance detail
 	        DB::commit();
             return response()->json(['status' => 'success','msg' => 'Data Pembayaran Berhasil Dihapus']);
         } catch (\Exception $e) {
@@ -116,18 +161,59 @@ class FinancialController extends Controller {
     public function update_finance() {
     	DB::beginTransaction();
         $this->validate(request(), [
+            'students_id' => 'required',
             'class_id' => 'required',
             'title' => 'required|min:3',
             'remark' => 'min:3',
-            'total_pay' => 'required|min:3',
         ]);
 
         $finance = FinancialModel::findOrFail(request('id'));
         $finance->class_id = request('class_id');
+        $finance->students_id = request('students_id');
+        $finance->class_id = request('class_id');
         $finance->title = request('title');
         $finance->remark = request('remark');
-        $finance->total_pay = request('total_pay');
-        $finance->save();
+        $finance->input_by = \Auth::user()->id;
+        if(!$finance->save()){
+            return response()->json(['status' => 'danger','msg' => 'Data Pembayaran Tidak Berhasil Dirubah, silakan ulangi kembali atau hubungi developer anda.']);
+        }
+
+        $total_pay = 0;
+        foreach (request('subtotal') as $subtotal) {
+            $total_pay += $subtotal; 
+        }
+        $finance_update = FinancialModel::findOrFail(request('id'));
+        $finance_update->total_pay = $total_pay;
+        $finance_update->save();
+
+        //start delete first
+        $delete_finance_detail = FinanceDetailModel::where('financial_id', request('id'));
+        $delete_finance_detail->delete();
+        //end delete first
+
+        //START save data di table finance_detail
+        foreach (request('fee') as $key => $value) {
+            $total = 0;
+            $discount = 0;
+            $subtotal = 0;
+            if(request('total')[$key]>0)$total = request('total')[$key];
+            if(request('discount')[$key]>0)$discount = request('discount')[$key];
+            if(request('subtotal')[$key]>0)$subtotal = request('subtotal')[$key];
+            if(request('remark_detail')[$key] != ''){
+                $remark_detail = request('remark_detail')[$key];
+            } else {
+                $remark_detail = '-';
+            }
+            FinanceDetailModel::create([
+                'financial_id' => $finance->id, //last id save
+                'fee' => $value,
+                'total' => $total,
+                'discount' => $discount,
+                'subtotal' => $subtotal,
+                'remark' => $remark_detail
+            ]);
+        }
+        // END save data di table finance_detail
 
     	DB::commit();
         return response()->json(['status' => 'success','msg' => 'Data Pembayaran Berhasil Diperbaharui']);
