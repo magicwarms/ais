@@ -68,10 +68,7 @@ class AssignSubjectTeacherController extends Controller {
             'subject_day_time' => 'required',
             'total_hours' => 'required|numeric'
         ]);
-        $exist_assign = DB::table('subject_join_teacher')->where('subjects_id',request('subjects_id'))->where('teachers_id',request('teachers_id'))->first();
-        if(!empty($exist_assign)){
-            return response()->json(['status' => 'warning','msg' => 'Maaf, sepertinya guru yang dipilih, sudah ada mata pelajaran tersebut.']);
-        }
+        
         AssignSubjectTeacherModel::create([
             'subjects_id' => request('subjects_id'),
             'teachers_id' => request('teachers_id'),
