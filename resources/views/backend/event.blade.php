@@ -141,7 +141,7 @@
             scrollX: true,
             searching: true,
             "autoWidth": true,
-            lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],\
+            lengthMenu: [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ],
             'pagingType': 'full_numbers_no_ellipses',
             ajax: {
                 url:  "{{ route('event.show') }}",
