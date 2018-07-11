@@ -195,7 +195,7 @@ class AssignmentController extends Controller {
             'name' => 'required|max:80|min:3',
             'class_id' => 'required',
             'subjects_id' => 'required',
-            'assignment_file' => 'required|image|mimes:jpeg,png,jpg,pdf,doc,pptx,xlsx|max:2048',
+            'assignment_file' => 'image|mimes:jpeg,png,jpg,pdf,doc,pptx,xlsx|max:2048',
             'remark' => 'required|min:5',
             'start_assignment' => 'required|date',
             'end_assignment' => 'required|date',
